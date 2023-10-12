@@ -13,4 +13,4 @@ dependencyResolutionManagement {
     }
 }
 rootProject.name = "DoSoptTemplate"
-include ':app'
+include(":app")
