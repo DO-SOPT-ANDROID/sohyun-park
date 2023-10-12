@@ -63,6 +63,7 @@ class SignInActivity : BindingActivity<ActivitySignInBinding>(R.layout.activity_
 
     private fun navigateToMain() {
         val intent = Intent(this, MainActivity::class.java)
+        intent.putExtra(SIGN_UP_INFORMATION, savedSignUpInformation)
         startActivity(intent)
         finish()
     }
@@ -75,13 +76,10 @@ class SignInActivity : BindingActivity<ActivitySignInBinding>(R.layout.activity_
                         savedSignUpInformation =
                             result.data?.getSerializableExtra(SIGN_UP_INFORMATION, User::class.java)
                                 ?: return@registerForActivityResult
-
-                        toast(savedSignUpInformation.toString())
                     } else {
                         savedSignUpInformation =
                             (result.data?.getSerializableExtra(SIGN_UP_INFORMATION)
                                 ?: return@registerForActivityResult) as User?
-                        toast(savedSignUpInformation.toString())
                     }
                 }
             }
