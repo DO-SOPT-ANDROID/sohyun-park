@@ -21,8 +21,7 @@ android {
         release {
             isMinifyEnabled = false
             proguardFiles(
-                getDefaultProguardFile("proguard-android-optimize.txt"),
-                "proguard-rules.pro"
+                getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro"
             )
         }
     }
@@ -56,5 +55,8 @@ dependencies {
 
     // Third-Party
     implementation(Jakewharton.TIMBER)
+
+    // Kotlin
+    implementation(KotlinX.KOTLINX_SERIALIZATION)
 
 }

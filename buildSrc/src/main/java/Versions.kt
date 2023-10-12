@@ -6,6 +6,7 @@ object Versions {
 
     const val GRADLE = "7.4.2"
     const val KOTLIN_VERSION = "1.7.20"
+    const val KOTLIN_SERIALIZATION_VERSION = "1.4.1"
 
     const val APP_COMPAT = "1.6.1"
     const val CORE_KTX = "1.8.0"

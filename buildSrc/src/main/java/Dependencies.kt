@@ -17,6 +17,12 @@ object TestDependencies {
 
 }
 
+object KotlinX {
+    const val KOTLINX_SERIALIZATION =
+        "org.jetbrains.kotlinx:kotlinx-serialization-json:${Versions.KOTLIN_SERIALIZATION_VERSION}"
+}
+
+
 object Google {
     const val MATERIAL = "com.google.android.material:material:${Versions.MATERIAL}"
 }
