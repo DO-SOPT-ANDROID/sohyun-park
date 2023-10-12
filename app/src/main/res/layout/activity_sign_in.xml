@@ -61,7 +61,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
             android:hint="@string/et_sign_in_pw"
-            android:inputType="text"
+            android:inputType="textPassword"
             android:paddingHorizontal="10dp"
             android:textAppearance="@style/TextAppearance.DoSopt.Body02"
             app:layout_constraintBottom_toBottomOf="@id/tv_sign_in_pw_label"
