@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="TextAppearance.DoSopt" parent="">
+        <item name="android:textStyle">normal</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:includeFontPadding">false</item>
+    </style>
+
+    <style name="TextAppearance.DoSopt.Title">
+        <item name="fontFamily">@font/font_baeum_bold</item>
+        <item name="android:textSize">28sp</item>
+        <item name="lineHeight">37dp</item>
+    </style>
+
+    <style name="TextAppearance.DoSopt.Body01">
+        <item name="fontFamily">@font/font_baeum_regular</item>
+        <item name="android:textSize">22sp</item>
+        <item name="lineHeight">24dp</item>
+    </style>
+
+    <style name="TextAppearance.DoSopt.Body02">
+        <item name="fontFamily">@font/font_baeum_regular</item>
+        <item name="android:textSize">20sp</item>
+        <item name="lineHeight">22dp</item>
+    </style>
+
+</resources>
