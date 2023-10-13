@@ -3,6 +3,7 @@ package org.sopt.dosopttemplate.features.account
 import android.content.Intent
 import com.example.core_ui.base.BindingActivity
 import com.example.core_ui.context.snackBar
+import com.example.core_ui.context.toast
 import org.sopt.dosopttemplate.R
 import org.sopt.dosopttemplate.core.view.DrinkingCapacityValidityCheck
 import org.sopt.dosopttemplate.core.view.IdValidityCheck
@@ -12,6 +13,7 @@ import org.sopt.dosopttemplate.core.view.NicknameValidityCheck
 import org.sopt.dosopttemplate.core.view.PwValidityCheck
 import org.sopt.dosopttemplate.core.view.Valid
 import org.sopt.dosopttemplate.databinding.ActivitySignUpBinding
+import org.sopt.dosopttemplate.features.account.model.User
 import org.sopt.dosopttemplate.features.util.Account.SIGN_UP_INFORMATION
 
 class SignUpActivity : BindingActivity<ActivitySignUpBinding>(R.layout.activity_sign_up) {
@@ -34,6 +36,22 @@ class SignUpActivity : BindingActivity<ActivitySignUpBinding>(R.layout.activity_
                 viewSignUpDrinkingCapacity.etSignUp.text?.toString() ?: " "
             )
         }
+    }
+
+    private fun handleSignUpSuccess(inputInformation: User) {
+        with(inputInformation) {
+            if (checkIdValidity(id) && checkPwValidity(pw) && checkNicknameValidity(nickname) && checkDrinkingCapacityValidity(
+                    drinkingCapacity
+                )
+            ) {
+                val intent = Intent(this@SignUpActivity, SignInActivity::class.java)
+                intent.putExtra(SIGN_UP_INFORMATION, this)
+                setResult(RESULT_OK, intent)
+                showSignUpSuccessMessage()
+                finish()
+            }
+        }
+
     }
 
     private fun checkIdValidity(id: String): Boolean {
@@ -69,23 +87,12 @@ class SignUpActivity : BindingActivity<ActivitySignUpBinding>(R.layout.activity_
         }
     }
 
-    private fun handleSignUpSuccess(inputInformation: User) {
-        with(inputInformation) {
-            if (checkIdValidity(id) && checkPwValidity(pw) && checkNicknameValidity(nickname) && checkDrinkingCapacityValidity(
-                    drinkingCapacity
-                )
-            ) {
-                val intent = Intent(this@SignUpActivity, SignInActivity::class.java)
-                intent.putExtra(SIGN_UP_INFORMATION, this)
-                setResult(RESULT_OK, intent)
-                finish()
-            }
-        }
-
-    }
-
     private fun showSignUpErrorMessage(errorMessage: String): Boolean {
         snackBar(binding.root) { errorMessage }
         return false
+    }
+
+    private fun showSignUpSuccessMessage() {
+        toast(getString(R.string.success_message_sign_up))
     }
 }

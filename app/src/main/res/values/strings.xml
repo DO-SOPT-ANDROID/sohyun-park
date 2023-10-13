@@ -19,4 +19,5 @@
     <string name="error_message_valid_sign_in">로그인에 성공했습니다.</string>
     <string name="content_description_iv_main_profile">프로필 사진입니다.</string>
     <string name="error_message_empty_data">데이터 없음</string>
+    <string name="success_message_sign_up">회원가입에 성공했습니다.</string>
 </resources>

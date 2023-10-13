@@ -1,10 +1,10 @@
-package org.sopt.dosopttemplate.features
+package org.sopt.dosopttemplate.features.main
 
 import android.os.Build
 import com.example.core_ui.base.BindingActivity
 import org.sopt.dosopttemplate.R
 import org.sopt.dosopttemplate.databinding.ActivityMainBinding
-import org.sopt.dosopttemplate.features.account.User
+import org.sopt.dosopttemplate.features.account.model.User
 import org.sopt.dosopttemplate.features.util.Account
 
 

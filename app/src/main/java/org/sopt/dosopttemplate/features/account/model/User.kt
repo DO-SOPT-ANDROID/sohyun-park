@@ -1,4 +1,4 @@
-package org.sopt.dosopttemplate.features.account
+package org.sopt.dosopttemplate.features.account.model
 
 import java.io.Serializable
 
