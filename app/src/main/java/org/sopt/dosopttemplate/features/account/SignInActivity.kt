@@ -28,17 +28,17 @@ class SignInActivity : BindingActivity<ActivitySignInBinding>(R.layout.activity_
         resultLauncher =
             registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
                 if (result.resultCode == Activity.RESULT_OK) {
-                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
-                        savedSignUpInformation =
-                            result.data?.getSerializableExtra(SIGN_UP_INFORMATION, User::class.java)
-                                ?: return@registerForActivityResult
-                    } else {
-                        savedSignUpInformation =
-                            (result.data?.getSerializableExtra(SIGN_UP_INFORMATION)
-                                ?: return@registerForActivityResult) as User?
-                    }
+                    savedSignUpInformation = extractSignUpInformation(result.data)
                 }
             }
+    }
+
+    private fun extractSignUpInformation(data: Intent?): User? {
+        return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            data?.getSerializableExtra(SIGN_UP_INFORMATION, User::class.java) as? User
+        } else {
+            data?.getSerializableExtra(SIGN_UP_INFORMATION) as? User
+        }
     }
 
     private fun setClickEventOnSignUpLabelButton() {

@@ -14,10 +14,11 @@ class MainActivity : BindingActivity<ActivityMainBinding>(R.layout.activity_main
     }
 
     private fun getUserInformation(): User? {
-        return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
-            intent.getSerializableExtra(Account.SIGN_UP_INFORMATION, User::class.java)
-        } else {
-            intent.getSerializableExtra(Account.SIGN_UP_INFORMATION) as User
+        val signUpInformation = intent.getSerializableExtra(Account.SIGN_UP_INFORMATION)
+        return when {
+            Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU -> signUpInformation as? User
+            signUpInformation is User -> signUpInformation
+            else -> null
         }
     }
 
