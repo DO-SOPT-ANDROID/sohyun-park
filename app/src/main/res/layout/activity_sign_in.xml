@@ -84,7 +84,7 @@
             android:id="@+id/btn_sign_in_signup_label"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="60dp"
+            android:layout_marginBottom="40dp"
             android:background="@color/yellow_sub"
             android:stateListAnimator="@null"
             android:text="@string/btn_sign_in_signup_label"
