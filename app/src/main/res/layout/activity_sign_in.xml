@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingHorizontal="30dp">
+
+        <TextView
+            android:id="@+id/tv_sign_in_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            android:text="@string/tv_sign_in_title"
+            android:textAlignment="center"
+            android:textAppearance="@style/TextAppearance.DoSopt.Title"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_sign_in_id_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="120dp"
+            android:text="@string/tv_sign_in_id_label"
+            android:textAppearance="@style/TextAppearance.DoSopt.Body01"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_sign_in_title" />
+
+        <EditText
+            android:id="@+id/et_sign_in_id"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:hint="@string/et_sign_in_id"
+            android:inputType="text"
+            android:paddingHorizontal="10dp"
+            android:textAppearance="@style/TextAppearance.DoSopt.Body02"
+            app:layout_constraintBottom_toBottomOf="@id/tv_sign_in_id_label"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/tv_sign_in_id_label"
+            app:layout_constraintTop_toTopOf="@id/tv_sign_in_id_label" />
+
+        <TextView
+            android:id="@+id/tv_sign_in_pw_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+            android:text="@string/tv_sign_in_pw_label"
+            android:textAppearance="@style/TextAppearance.DoSopt.Body01"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_sign_in_id_label" />
+
+        <EditText
+            android:id="@+id/et_sign_in_pw"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:hint="@string/et_sign_in_pw"
+            android:inputType="textPassword"
+            android:paddingHorizontal="10dp"
+            android:textAppearance="@style/TextAppearance.DoSopt.Body02"
+            app:layout_constraintBottom_toBottomOf="@id/tv_sign_in_pw_label"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/tv_sign_in_pw_label"
+            app:layout_constraintTop_toTopOf="@id/tv_sign_in_pw_label" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_sign_in_signin_label"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:background="@color/yellow_sub"
+            android:stateListAnimator="@null"
+            android:text="@string/btn_sign_in_signin_label"
+            android:textAppearance="@style/TextAppearance.DoSopt.Body02"
+            app:layout_constraintBottom_toTopOf="@id/btn_sign_in_signup_label" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_sign_in_signup_label"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="60dp"
+            android:background="@color/yellow_sub"
+            android:stateListAnimator="@null"
+            android:text="@string/btn_sign_in_signup_label"
+            android:textAppearance="@style/TextAppearance.DoSopt.Body02"
+            app:layout_constraintBottom_toBottomOf="parent" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

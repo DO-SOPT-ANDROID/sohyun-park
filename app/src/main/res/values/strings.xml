@@ -1,3 +1,23 @@
 <resources>
     <string name="app_name">DoSoptTemplate</string>
+    <string name="tv_sign_in_title">Welcome to Sopt</string>
+    <string name="tv_sign_in_id_label">ID.</string>
+    <string name="et_sign_in_id">아이디를 입력해주세요.</string>
+    <string name="tv_sign_in_pw_label">PW.</string>
+    <string name="et_sign_in_pw">비밀번호를 입력해주세요.</string>
+    <string name="btn_sign_in_signin_label">SIGN IN</string>
+    <string name="btn_sign_in_signup_label">SIGN UP</string>
+    <string name="tv_sign_up_id_label">[ID]</string>
+    <string name="tv_sign_up_pw_label">[PW]</string>
+    <string name="tv_sign_up_nickname_label">[NICKNAME]</string>
+    <string name="tv_sign_up_drinking_capacity_label">[DRINKING CAPACITY]</string>
+    <string name="et_sign_up_nickname">닉네임을 입력해주세요.</string>
+    <string name="et_sign_up_drinking_capacity">주량을 입력해주세요.</string>
+    <string name="tv_sign_up_title">SIGN UP</string>
+    <string name="btn_sign_up_signup_label">회원가입 하기</string>
+    <string name="error_message_invalid_sign_in">로그인에 실패했습니다.</string>
+    <string name="error_message_valid_sign_in">로그인에 성공했습니다.</string>
+    <string name="content_description_iv_main_profile">프로필 사진입니다.</string>
+    <string name="error_message_empty_data">데이터 없음</string>
+    <string name="success_message_sign_up">회원가입에 성공했습니다.</string>
 </resources>
