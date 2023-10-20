@@ -8,6 +8,9 @@ object AndroidX {
         "androidx.lifecycle:lifecycle-viewmodel-ktx:${Versions.LIFECYCLE_VIEWMODEL_KTX}"
 
     const val CONSTRAINT = "androidx.constraintlayout:constraintlayout:${Versions.CONSTRAINT}"
+    const val SHARED_PREFERENCE =
+        "androidx.security:security-crypto-ktx:${Versions.SHARED_PREFERENCE_VERSION}"
+
 }
 
 object TestDependencies {
@@ -25,6 +28,8 @@ object KotlinX {
 
 object Google {
     const val MATERIAL = "com.google.android.material:material:${Versions.MATERIAL}"
+    const val HILT_ANDROID = "com.google.dagger:hilt-android:${Versions.HILT}"
+    const val HILT_ANDROID_COMPILER = "com.google.dagger:hilt-android-compiler:${Versions.HILT}"
 }
 
 object ThirdParty {

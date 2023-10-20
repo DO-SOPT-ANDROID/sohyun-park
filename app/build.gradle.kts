@@ -1,6 +1,8 @@
 plugins {
     id("com.android.application")
     kotlin("android")
+    kotlin("kapt")
+    id("dagger.hilt.android.plugin")
 }
 
 android {
@@ -44,6 +46,9 @@ dependencies {
     implementation(AndroidX.CORE_KTX)
     implementation(AndroidX.APP_COMPAT)
     implementation(AndroidX.CONSTRAINT)
+    implementation(AndroidX.ACTIVITY)
+    implementation(AndroidX.LIFECYCLE_VIEWMODEL_KTX)
+    implementation(AndroidX.SHARED_PREFERENCE)
 
     // Matrial Design
     implementation(Google.MATERIAL)
@@ -59,4 +64,7 @@ dependencies {
     // Kotlin
     implementation(KotlinX.KOTLINX_SERIALIZATION)
 
+    //Hilt
+    implementation(Google.HILT_ANDROID)
+    kapt(Google.HILT_ANDROID_COMPILER)
 }
