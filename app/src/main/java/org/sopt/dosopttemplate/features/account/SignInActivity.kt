@@ -8,12 +8,14 @@ import androidx.activity.result.contract.ActivityResultContracts
 import com.example.core_ui.base.BindingActivity
 import com.example.core_ui.context.snackBar
 import com.example.core_ui.context.toast
+import dagger.hilt.android.AndroidEntryPoint
 import org.sopt.dosopttemplate.R
 import org.sopt.dosopttemplate.databinding.ActivitySignInBinding
 import org.sopt.dosopttemplate.features.account.model.User
 import org.sopt.dosopttemplate.features.main.MainActivity
 import org.sopt.dosopttemplate.features.util.Account.SIGN_UP_INFORMATION
 
+@AndroidEntryPoint
 class SignInActivity : BindingActivity<ActivitySignInBinding>(R.layout.activity_sign_in) {
     private lateinit var resultLauncher: ActivityResultLauncher<Intent>
     private var savedSignUpInformation: User? = null
@@ -35,9 +37,9 @@ class SignInActivity : BindingActivity<ActivitySignInBinding>(R.layout.activity_
 
     private fun extractSignUpInformation(data: Intent?): User? {
         return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
-            data?.getSerializableExtra(SIGN_UP_INFORMATION, User::class.java) as? User
+            data?.getParcelableExtra(SIGN_UP_INFORMATION, User::class.java)
         } else {
-            data?.getSerializableExtra(SIGN_UP_INFORMATION) as? User
+            data?.getParcelableExtra(SIGN_UP_INFORMATION) as? User
         }
     }
 
