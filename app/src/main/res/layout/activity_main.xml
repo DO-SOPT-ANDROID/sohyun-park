@@ -78,5 +78,16 @@
             app:layout_constraintTop_toBottomOf="@id/tv_main_drinking_capacity_label"
             tools:text="1병" />
 
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_main_sign_out_label"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="40dp"
+            android:background="@color/yellow_sub"
+            android:stateListAnimator="@null"
+            android:text="@string/btn_main_sign_out_label"
+            android:textAppearance="@style/TextAppearance.DoSopt.Body02"
+            app:layout_constraintBottom_toBottomOf="parent" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
