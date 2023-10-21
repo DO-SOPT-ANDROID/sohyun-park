@@ -30,6 +30,7 @@ object Google {
     const val MATERIAL = "com.google.android.material:material:${Versions.MATERIAL}"
     const val HILT_ANDROID = "com.google.dagger:hilt-android:${Versions.HILT}"
     const val HILT_ANDROID_COMPILER = "com.google.dagger:hilt-android-compiler:${Versions.HILT}"
+    const val GSON = "com.google.code.gson:gson:${Versions.GSON}"
 }
 
 object ThirdParty {

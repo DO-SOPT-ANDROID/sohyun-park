@@ -5,6 +5,7 @@ import android.content.Intent
 import android.os.Build
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.activity.viewModels
 import com.example.core_ui.base.BindingActivity
 import com.example.core_ui.context.snackBar
 import com.example.core_ui.context.toast
@@ -19,6 +20,7 @@ import org.sopt.dosopttemplate.features.util.Account.SIGN_UP_INFORMATION
 class SignInActivity : BindingActivity<ActivitySignInBinding>(R.layout.activity_sign_in) {
     private lateinit var resultLauncher: ActivityResultLauncher<Intent>
     private var savedSignUpInformation: User? = null
+    private val viewModel by viewModels<SignInViewModel>()
 
     override fun initView() {
         setResultSignUpInformation()
@@ -75,13 +77,14 @@ class SignInActivity : BindingActivity<ActivitySignInBinding>(R.layout.activity_
     }
 
     private fun handleSignInSuccess() {
+        viewModel.setCheckSignIn(true)
         toast(getString(R.string.error_message_valid_sign_in))
         navigateToMain()
     }
 
     private fun navigateToMain() {
         val intent = Intent(this, MainActivity::class.java)
-        intent.putExtra(SIGN_UP_INFORMATION, savedSignUpInformation)
+        savedSignUpInformation?.let { viewModel.setUserInformation(it) }
         startActivity(intent)
         finish()
     }

@@ -42,7 +42,7 @@ class SignUpActivity : BindingActivity<ActivitySignUpBinding>(R.layout.activity_
             )
         }
     }
-    
+
     private fun collectSignUpValidity() {
         viewModel.signUpValidity.flowWithLifecycle(lifecycle).onEach {
             when (it) {

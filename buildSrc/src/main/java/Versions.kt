@@ -21,6 +21,7 @@ object Versions {
 
     const val MATERIAL = "1.5.0"
     const val HILT = "2.44"
+    const val GSON = "2.10.1"
 
     const val TIMBER = "5.0.1"
 
