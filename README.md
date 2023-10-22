@@ -2,7 +2,9 @@
 
 ## 과제 링크 제출란
 
-ex) [1주차 도전 과제 노션 링크](https://council.busan.go.kr/council/freeboard/52658)
+#### 1주차 과제
+[Activity lifecycle](https://verbose-tablecloth-151.notion.site/Activity-lifecycle-567e2f5ed974410d888d01d7797be138?pvs=4)
+[Intent](https://verbose-tablecloth-151.notion.site/Intent-c7be23f1d2cf4217bf10428f349b9d4c?pvs=4)
 
 ## 템플릿 설명
 레포지터리에는 하나의 브랜치가 있습니다.
