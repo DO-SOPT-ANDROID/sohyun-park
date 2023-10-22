@@ -14,6 +14,7 @@ class SignInViewModel @Inject constructor(
     fun setCheckSignIn(check: Boolean) = accountRepository.setCheckSignIn(check)
     fun setUserInformation(user: User) = accountRepository.setUserInformation(user.toUserEntity())
     fun getUserInformation(): User? = accountRepository.getUserInformation()?.toUser()
+
     //회원 탈퇴 구현시 쓰임
     fun removeUserInformation() = accountRepository.removeUserInformation()
 }

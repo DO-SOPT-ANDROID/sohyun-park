@@ -1,6 +1,5 @@
 package org.sopt.dosopttemplate.features.main
 
-import android.content.Intent
 import androidx.activity.OnBackPressedCallback
 import androidx.activity.viewModels
 import androidx.lifecycle.lifecycleScope
@@ -9,6 +8,7 @@ import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import org.sopt.dosopttemplate.R
+import org.sopt.dosopttemplate.core.context.navigateTo
 import org.sopt.dosopttemplate.core.context.snackBar
 import org.sopt.dosopttemplate.databinding.ActivityMainBinding
 import org.sopt.dosopttemplate.features.account.SignInActivity
@@ -28,7 +28,7 @@ class MainActivity : BindingActivity<ActivityMainBinding>(R.layout.activity_main
                 finish()
             } else {
                 doubleBackToExitPressedOnce = true
-                snackBar(binding.root) { "뒤로 가기 버튼을 한 번 더 누르면 종료됩니다." }
+                snackBar(binding.root) { getString(R.string.message_back_to_exit_pressed) }
                 lifecycleScope.launch {
                     delay(2000L)
                     doubleBackToExitPressedOnce = false
@@ -39,8 +39,8 @@ class MainActivity : BindingActivity<ActivityMainBinding>(R.layout.activity_main
 
     override fun initView() {
         signInViewModel.getUserInformation()?.let { setMyPageInformation(it) }
-        setClickEventOnSignOutLabelButton()
         this.onBackPressedDispatcher.addCallback(this, callback)
+        setClickEventOnSignOutLabelButton()
     }
 
     private fun setMyPageInformation(user: User) {
@@ -55,13 +55,7 @@ class MainActivity : BindingActivity<ActivityMainBinding>(R.layout.activity_main
     private fun setClickEventOnSignOutLabelButton() {
         binding.btnMainSignOutLabel.setOnClickListener {
             signInViewModel.setCheckSignIn(false)
-            navigateToSignIn()
+            navigateTo<SignInActivity>()
         }
-    }
-
-    private fun navigateToSignIn() {
-        val intent = Intent(this, SignInActivity::class.java)
-        startActivity(intent)
-        finish()
     }
 }

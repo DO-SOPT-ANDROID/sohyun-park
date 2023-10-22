@@ -4,12 +4,12 @@ import androidx.activity.viewModels
 import androidx.lifecycle.flowWithLifecycle
 import androidx.lifecycle.lifecycleScope
 import com.example.core_ui.base.BindingActivity
-import org.sopt.dosopttemplate.core.context.snackBar
-import org.sopt.dosopttemplate.core.context.toast
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import org.sopt.dosopttemplate.R
+import org.sopt.dosopttemplate.core.context.snackBar
+import org.sopt.dosopttemplate.core.context.toast
 import org.sopt.dosopttemplate.core.view.UiState
 import org.sopt.dosopttemplate.databinding.ActivitySignUpBinding
 import org.sopt.dosopttemplate.features.account.model.User
@@ -45,8 +45,8 @@ class SignUpActivity : BindingActivity<ActivitySignUpBinding>(R.layout.activity_
     private fun collectSignUpValidity() {
         signUpViewModel.signUpValidity.flowWithLifecycle(lifecycle).onEach {
             when (it) {
-                is UiState.Failure -> showSignUpErrorMessage(it.errorMessage)
                 is UiState.Success -> handleSignUpSuccess(it.data)
+                is UiState.Failure -> snackBar(binding.root) { it.errorMessage }
                 is UiState.Loading -> {}
             }
         }.launchIn(lifecycleScope)
@@ -54,15 +54,7 @@ class SignUpActivity : BindingActivity<ActivitySignUpBinding>(R.layout.activity_
 
     private fun handleSignUpSuccess(inputSignUpInformation: User) {
         signInViewModel.setUserInformation(inputSignUpInformation)
-        showSignUpSuccessMessage()
-        finish()
-    }
-
-    private fun showSignUpErrorMessage(errorMessage: String) {
-        snackBar(binding.root) { errorMessage }
-    }
-
-    private fun showSignUpSuccessMessage() {
         toast(getString(R.string.success_message_sign_up))
+        finish()
     }
 }

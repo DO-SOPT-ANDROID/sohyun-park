@@ -34,9 +34,16 @@ class SignUpViewModel @Inject constructor(
         return errorMessage?.let { UiState.Failure(it) } ?: UiState.Success(inputSignUpInformation)
     }
 
-    private fun checkIdValidity(id: String) = id.length in 6..10
-    private fun checkPwValidity(pw: String) = pw.length in 8..12
+    private fun checkIdValidity(id: String) = id.length in MIN_ID_LENGTH..MAX_ID_LENGTH
+    private fun checkPwValidity(pw: String) = pw.length in MIN_PW_LENGTH..MAX_PW_LENGTH
     private fun checkNicknameValidity(nickname: String) = nickname.isNotBlank()
     private fun checkDrinkingCapacityValidity(drinkingCapacity: String) =
         drinkingCapacity.isNotBlank()
+
+    companion object {
+        const val MIN_ID_LENGTH = 6
+        const val MAX_ID_LENGTH = 10
+        const val MIN_PW_LENGTH = 8
+        const val MAX_PW_LENGTH = 12
+    }
 }

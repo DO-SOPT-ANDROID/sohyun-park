@@ -9,7 +9,7 @@
     <string name="btn_sign_in_signin_label">SIGN IN</string>
     <string name="btn_sign_in_signup_label">SIGN UP</string>
     <string name="error_message_invalid_sign_in">로그인에 실패했습니다.</string>
-    <string name="error_message_valid_sign_in">로그인에 성공했습니다.</string>
+    <string name="success_message_valid_sign_in">로그인에 성공했습니다.</string>
 
     <!-- sign up -->
     <string name="tv_sign_up_id_label">[ID]</string>
@@ -25,4 +25,5 @@
     <!-- main -->
     <string name="content_description_iv_main_profile">프로필 사진입니다.</string>
     <string name="btn_main_sign_out_label">SIGN OUT</string>
+    <string name="message_back_to_exit_pressed">뒤로 가기 버튼을 한 번 더 누르면 종료됩니다.</string>
 </resources>

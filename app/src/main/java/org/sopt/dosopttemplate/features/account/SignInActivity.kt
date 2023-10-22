@@ -1,14 +1,9 @@
 package org.sopt.dosopttemplate.features.account
 
 import android.content.Intent
-import androidx.activity.OnBackPressedCallback
 import androidx.activity.viewModels
-import androidx.lifecycle.lifecycleScope
 import com.example.core_ui.base.BindingActivity
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.runBlocking
 import org.sopt.dosopttemplate.R
 import org.sopt.dosopttemplate.core.context.navigateTo
 import org.sopt.dosopttemplate.core.context.snackBar
@@ -53,6 +48,14 @@ class SignInActivity : BindingActivity<ActivitySignInBinding>(R.layout.activity_
         }
     }
 
+    private fun handleSignIn() {
+        if (this::savedSignUpInformation.isInitialized && isSignInSuccessful(savedSignUpInformation)) {
+            handleSignInSuccess()
+        } else {
+            snackBar(binding.root) { getString(R.string.error_message_invalid_sign_in) }
+        }
+    }
+
     private fun isSignInSuccessful(user: User): Boolean {
         return checkIdIdentification(user.id) && checkPwIdentification(user.pw)
     }
@@ -67,23 +70,7 @@ class SignInActivity : BindingActivity<ActivitySignInBinding>(R.layout.activity_
 
     private fun handleSignInSuccess() {
         viewModel.setCheckSignIn(true)
-        toast(getString(R.string.error_message_valid_sign_in))
-        navigateToMain()
-    }
-
-    private fun handleSignIn() {
-        if (this::savedSignUpInformation.isInitialized) {
-            if (isSignInSuccessful(savedSignUpInformation)) handleSignInSuccess() else showSignInErrorMessage()
-        } else {
-            showSignInErrorMessage()
-        }
-    }
-
-    private fun navigateToMain() {
+        toast(getString(R.string.success_message_valid_sign_in))
         navigateTo<MainActivity>()
-    }
-
-    private fun showSignInErrorMessage() {
-        snackBar(binding.root) { getString(R.string.error_message_invalid_sign_in) }
     }
 }
