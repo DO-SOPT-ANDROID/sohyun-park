@@ -1,6 +1,8 @@
 package org.sopt.dosopttemplate.features.account
 
+import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import androidx.activity.viewModels
 import com.example.core_ui.base.BindingActivity
 import com.example.core_ui.context.snackBar
@@ -17,6 +19,7 @@ class SignInActivity : BindingActivity<ActivitySignInBinding>(R.layout.activity_
     private val viewModel by viewModels<SignInViewModel>()
 
     override fun initView() {
+        toast(viewModel.getUserInformation().toString())
         setUserInformation()
         setClickEventOnSignUpLabelButton()
         setClickEventOnSignInLabelButton()
