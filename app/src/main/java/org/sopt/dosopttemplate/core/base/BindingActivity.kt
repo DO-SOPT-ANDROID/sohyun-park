@@ -7,7 +7,7 @@ import androidx.annotation.LayoutRes
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
-import com.example.core_ui.context.hideKeyboard
+import org.sopt.dosopttemplate.core.context.hideKeyboard
 
 abstract class BindingActivity<T : ViewDataBinding>(
     @LayoutRes private val layoutRes: Int,

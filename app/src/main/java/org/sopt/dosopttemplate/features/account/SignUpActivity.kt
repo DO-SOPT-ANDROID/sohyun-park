@@ -1,12 +1,11 @@
 package org.sopt.dosopttemplate.features.account
 
-import android.content.Intent
 import androidx.activity.viewModels
 import androidx.lifecycle.flowWithLifecycle
 import androidx.lifecycle.lifecycleScope
 import com.example.core_ui.base.BindingActivity
-import com.example.core_ui.context.snackBar
-import com.example.core_ui.context.toast
+import org.sopt.dosopttemplate.core.context.snackBar
+import org.sopt.dosopttemplate.core.context.toast
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
@@ -14,7 +13,6 @@ import org.sopt.dosopttemplate.R
 import org.sopt.dosopttemplate.core.view.UiState
 import org.sopt.dosopttemplate.databinding.ActivitySignUpBinding
 import org.sopt.dosopttemplate.features.account.model.User
-import org.sopt.dosopttemplate.features.util.Account.SIGN_UP_INFORMATION
 
 @AndroidEntryPoint
 class SignUpActivity : BindingActivity<ActivitySignUpBinding>(R.layout.activity_sign_up) {

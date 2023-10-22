@@ -1,14 +1,13 @@
 package org.sopt.dosopttemplate.features.account
 
-import android.content.Context
 import android.content.Intent
-import android.content.SharedPreferences
 import androidx.activity.viewModels
 import com.example.core_ui.base.BindingActivity
-import com.example.core_ui.context.snackBar
-import com.example.core_ui.context.toast
+import org.sopt.dosopttemplate.core.context.snackBar
+import org.sopt.dosopttemplate.core.context.toast
 import dagger.hilt.android.AndroidEntryPoint
 import org.sopt.dosopttemplate.R
+import org.sopt.dosopttemplate.core.context.navigateTo
 import org.sopt.dosopttemplate.databinding.ActivitySignInBinding
 import org.sopt.dosopttemplate.features.account.model.User
 import org.sopt.dosopttemplate.features.main.MainActivity
@@ -19,7 +18,6 @@ class SignInActivity : BindingActivity<ActivitySignInBinding>(R.layout.activity_
     private val viewModel by viewModels<SignInViewModel>()
 
     override fun initView() {
-        toast(viewModel.getUserInformation().toString())
         setUserInformation()
         setClickEventOnSignUpLabelButton()
         setClickEventOnSignInLabelButton()
@@ -73,9 +71,7 @@ class SignInActivity : BindingActivity<ActivitySignInBinding>(R.layout.activity_
     }
 
     private fun navigateToMain() {
-        val intent = Intent(this, MainActivity::class.java)
-        startActivity(intent)
-        finish()
+        navigateTo<MainActivity>()
     }
 
     private fun showSignInErrorMessage() {
