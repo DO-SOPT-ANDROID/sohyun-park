@@ -1,18 +1,18 @@
 package org.sopt.dosopttemplate.data.repositoryimpl
 
 import org.sopt.dosopttemplate.data_local.datasourceimpl.SharedPreferencesDataSourceImpl
-import org.sopt.dosopttemplate.domain.entity.User
+import org.sopt.dosopttemplate.domain.entity.UserEntity
 import org.sopt.dosopttemplate.domain.repository.AccountRepository
 import javax.inject.Inject
 
 class AccountRepositoryImpl @Inject constructor(
     private val sharedPreferencesDataSourceImpl: SharedPreferencesDataSourceImpl
 ) : AccountRepository {
-    override fun setUserInformation(userInformation: User) {
+    override fun setUserInformation(userInformation: UserEntity) {
         sharedPreferencesDataSourceImpl.userInformation = userInformation
     }
 
-    override fun getUserInformation(): User {
+    override fun getUserInformation(): UserEntity? {
         return sharedPreferencesDataSourceImpl.userInformation
     }
 

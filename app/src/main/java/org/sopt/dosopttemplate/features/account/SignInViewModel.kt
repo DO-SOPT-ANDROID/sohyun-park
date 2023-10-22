@@ -13,4 +13,6 @@ class SignInViewModel @Inject constructor(
     fun getCheckSignIn(): Boolean = accountRepository.getCheckSignIn()
     fun setCheckSignIn(check: Boolean) = accountRepository.setCheckSignIn(check)
     fun setUserInformation(user: User) = accountRepository.setUserInformation(user.toUserEntity())
+    fun getUserInformation(): User? =
+        accountRepository.getUserInformation() as User?
 }

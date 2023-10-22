@@ -4,7 +4,7 @@ import android.content.SharedPreferences
 import androidx.core.content.edit
 import com.google.gson.GsonBuilder
 import org.sopt.dosopttemplate.data.datasource.SharedPreferenceDataSource
-import org.sopt.dosopttemplate.domain.entity.User
+import org.sopt.dosopttemplate.domain.entity.UserEntity
 import javax.inject.Inject
 import javax.inject.Singleton
 
@@ -15,8 +15,8 @@ class SharedPreferencesDataSourceImpl @Inject constructor(
 
     private val gson = GsonBuilder().create()
 
-    override var userInformation: User
-        get() = gson.fromJson(sharedPreferences.getString(USER_INFORMATION, null), User::class.java)
+    override var userInformation: UserEntity?
+        get() = gson.fromJson(sharedPreferences.getString(USER_INFORMATION, null), UserEntity::class.java)
         set(value) = sharedPreferences.edit { putString(USER_INFORMATION, gson.toJson(value)) }
 
     override var checkSignIn: Boolean

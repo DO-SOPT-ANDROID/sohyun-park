@@ -1,9 +1,9 @@
 package org.sopt.dosopttemplate.data.datasource
 
-import org.sopt.dosopttemplate.domain.entity.User
+import org.sopt.dosopttemplate.domain.entity.UserEntity
 
 
 interface SharedPreferenceDataSource {
-    var userInformation: User
+    var userInformation: UserEntity?
     var checkSignIn: Boolean
 }

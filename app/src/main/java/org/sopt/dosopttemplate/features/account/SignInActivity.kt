@@ -1,10 +1,6 @@
 package org.sopt.dosopttemplate.features.account
 
-import android.app.Activity
 import android.content.Intent
-import android.os.Build
-import androidx.activity.result.ActivityResultLauncher
-import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
 import com.example.core_ui.base.BindingActivity
 import com.example.core_ui.context.snackBar
@@ -14,35 +10,20 @@ import org.sopt.dosopttemplate.R
 import org.sopt.dosopttemplate.databinding.ActivitySignInBinding
 import org.sopt.dosopttemplate.features.account.model.User
 import org.sopt.dosopttemplate.features.main.MainActivity
-import org.sopt.dosopttemplate.features.util.Account.SIGN_UP_INFORMATION
 
 @AndroidEntryPoint
 class SignInActivity : BindingActivity<ActivitySignInBinding>(R.layout.activity_sign_in) {
-    private lateinit var resultLauncher: ActivityResultLauncher<Intent>
-    private var savedSignUpInformation: User? = null
+    private lateinit var savedSignUpInformation: User
     private val viewModel by viewModels<SignInViewModel>()
 
     override fun initView() {
-        setResultSignUpInformation()
+        setUserInformation()
         setClickEventOnSignUpLabelButton()
         setClickEventOnSignInLabelButton()
     }
 
-    private fun setResultSignUpInformation() {
-        resultLauncher =
-            registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
-                if (result.resultCode == Activity.RESULT_OK) {
-                    savedSignUpInformation = extractSignUpInformation(result.data)
-                }
-            }
-    }
-
-    private fun extractSignUpInformation(data: Intent?): User? {
-        return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
-            data?.getParcelableExtra(SIGN_UP_INFORMATION, User::class.java)
-        } else {
-            data?.getParcelableExtra(SIGN_UP_INFORMATION) as? User
-        }
+    private fun setUserInformation() {
+        viewModel.getUserInformation()?.let { savedSignUpInformation = it }
     }
 
     private fun setClickEventOnSignUpLabelButton() {
@@ -53,14 +34,12 @@ class SignInActivity : BindingActivity<ActivitySignInBinding>(R.layout.activity_
 
     private fun navigateToSignUp() {
         val intent = Intent(this, SignUpActivity::class.java)
-        resultLauncher.launch(intent)
+        startActivity(intent)
     }
 
     private fun setClickEventOnSignInLabelButton() {
         binding.btnSignInSigninLabel.setOnClickListener {
-            savedSignUpInformation?.let {
-                if (isSignInSuccessful(it)) handleSignInSuccess() else showSignInErrorMessage()
-            }
+            handleSignIn()
         }
     }
 
@@ -82,9 +61,16 @@ class SignInActivity : BindingActivity<ActivitySignInBinding>(R.layout.activity_
         navigateToMain()
     }
 
+    private fun handleSignIn() {
+        if (this::savedSignUpInformation.isInitialized) {
+            if (isSignInSuccessful(savedSignUpInformation)) handleSignInSuccess() else showSignInErrorMessage()
+        } else {
+            showSignInErrorMessage()
+        }
+    }
+
     private fun navigateToMain() {
         val intent = Intent(this, MainActivity::class.java)
-        savedSignUpInformation?.let { viewModel.setUserInformation(it) }
         startActivity(intent)
         finish()
     }
