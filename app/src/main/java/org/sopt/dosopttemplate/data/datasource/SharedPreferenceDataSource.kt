@@ -6,4 +6,5 @@ import org.sopt.dosopttemplate.domain.entity.UserEntity
 interface SharedPreferenceDataSource {
     var userInformation: UserEntity?
     var checkSignIn: Boolean
+    fun removeUserInformation()
 }

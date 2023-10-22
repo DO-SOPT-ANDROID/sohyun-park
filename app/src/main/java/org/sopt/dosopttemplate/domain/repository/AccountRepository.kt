@@ -7,4 +7,5 @@ interface AccountRepository {
     fun getUserInformation(): UserEntity?
     fun setCheckSignIn(checkSignIn: Boolean)
     fun getCheckSignIn(): Boolean
+    fun removeUserInformation()
 }

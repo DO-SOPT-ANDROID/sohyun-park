@@ -16,12 +16,18 @@ class SharedPreferencesDataSourceImpl @Inject constructor(
     private val gson = GsonBuilder().create()
 
     override var userInformation: UserEntity?
-        get() = gson.fromJson(sharedPreferences.getString(USER_INFORMATION, null), UserEntity::class.java)
+        get() = gson.fromJson(
+            sharedPreferences.getString(USER_INFORMATION, null), UserEntity::class.java
+        )
         set(value) = sharedPreferences.edit { putString(USER_INFORMATION, gson.toJson(value)) }
 
     override var checkSignIn: Boolean
         get() = sharedPreferences.getBoolean(CHECK_SIGN_IN, false)
         set(value) = sharedPreferences.edit { putBoolean(CHECK_SIGN_IN, value) }
+
+    override fun removeUserInformation() {
+        sharedPreferences.edit { remove(USER_INFORMATION) }
+    }
 
     companion object {
         const val CHECK_SIGN_IN = "CheckSignIn"

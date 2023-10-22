@@ -23,4 +23,8 @@ class AccountRepositoryImpl @Inject constructor(
     override fun getCheckSignIn(): Boolean {
         return sharedPreferencesDataSourceImpl.checkSignIn
     }
+
+    override fun removeUserInformation() {
+        sharedPreferencesDataSourceImpl.removeUserInformation()
+    }
 }
