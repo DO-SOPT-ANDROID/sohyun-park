@@ -30,7 +30,7 @@ class MainActivity : BindingActivity<ActivityMainBinding>(R.layout.activity_main
                 doubleBackToExitPressedOnce = true
                 snackBar(binding.root) { getString(R.string.message_back_to_exit_pressed) }
                 lifecycleScope.launch {
-                    delay(2000L)
+                    delay(BACK_TO_EXIT_DELAY_TIME)
                     doubleBackToExitPressedOnce = false
                 }
             }
@@ -57,5 +57,9 @@ class MainActivity : BindingActivity<ActivityMainBinding>(R.layout.activity_main
             signInViewModel.setCheckSignIn(false)
             navigateTo<SignInActivity>()
         }
+    }
+
+    companion object {
+        const val BACK_TO_EXIT_DELAY_TIME = 2000L
     }
 }
