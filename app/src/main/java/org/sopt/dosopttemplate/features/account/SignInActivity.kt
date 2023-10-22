@@ -1,9 +1,14 @@
 package org.sopt.dosopttemplate.features.account
 
 import android.content.Intent
+import androidx.activity.OnBackPressedCallback
 import androidx.activity.viewModels
+import androidx.lifecycle.lifecycleScope
 import com.example.core_ui.base.BindingActivity
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.runBlocking
 import org.sopt.dosopttemplate.R
 import org.sopt.dosopttemplate.core.context.navigateTo
 import org.sopt.dosopttemplate.core.context.snackBar
