@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="30dp"
+        tools:context=".features.main.MyPageActivity">
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/iv_main_profile"
+            android:layout_width="0dp"
+            android:layout_height="58dp"
+            android:contentDescription="@string/content_description_iv_main_profile"
+            android:scaleType="centerCrop"
+            android:src="@drawable/img_main_cat"
+            app:layout_constraintDimensionRatio="1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:shapeAppearance="@style/ShapeAppearanceOverlay.App.CornerSize50Percent" />
+
+        <TextView
+            android:id="@+id/tv_main_nickname"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:textAppearance="@style/TextAppearance.DoSopt.Body01"
+            app:layout_constraintBottom_toBottomOf="@id/iv_main_profile"
+            app:layout_constraintStart_toEndOf="@id/iv_main_profile"
+            app:layout_constraintTop_toTopOf="@id/iv_main_profile"
+            tools:text="박소현" />
+
+        <TextView
+            android:id="@+id/tv_main_id_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:text="@string/tv_sign_up_id_label"
+            android:textAppearance="@style/TextAppearance.DoSopt.Body01"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/iv_main_profile" />
+
+        <TextView
+            android:id="@+id/tv_main_id"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:textAppearance="@style/TextAppearance.DoSopt.Body02"
+            android:textColor="@color/grey_800"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_main_id_label"
+            tools:text="sohyun127" />
+
+        <TextView
+            android:id="@+id/tv_main_drinking_capacity_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="@string/tv_sign_up_drinking_capacity_label"
+            android:textAppearance="@style/TextAppearance.DoSopt.Body01"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_main_id" />
+
+        <TextView
+            android:id="@+id/tv_main_drinking_capacity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:textAppearance="@style/TextAppearance.DoSopt.Body02"
+            android:textColor="@color/grey_800"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_main_drinking_capacity_label"
+            tools:text="1병" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_main_sign_out_label"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="40dp"
+            android:background="@color/yellow_sub"
+            android:stateListAnimator="@null"
+            android:text="@string/btn_main_sign_out_label"
+            android:textAppearance="@style/TextAppearance.DoSopt.Body02"
+            app:layout_constraintBottom_toBottomOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

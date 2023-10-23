@@ -7,7 +7,6 @@ import dagger.hilt.android.AndroidEntryPoint
 import org.sopt.dosopttemplate.core.context.navigateTo
 import org.sopt.dosopttemplate.features.account.SignInActivity
 import org.sopt.dosopttemplate.features.account.SignInViewModel
-import org.sopt.dosopttemplate.features.main.MainActivity
 
 @AndroidEntryPoint
 class SplashActivity : AppCompatActivity() {
@@ -21,7 +20,7 @@ class SplashActivity : AppCompatActivity() {
 
     private fun autoSignIn() {
         if (viewModel.getCheckSignIn()) {
-            navigateTo<MainActivity>()
+            navigateTo<MyPageActivity>()
         } else {
             navigateTo<SignInActivity>()
         }

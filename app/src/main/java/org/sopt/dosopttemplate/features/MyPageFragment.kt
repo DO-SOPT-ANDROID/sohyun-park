@@ -1,22 +1,20 @@
-package org.sopt.dosopttemplate.features.main
+package org.sopt.dosopttemplate.features
 
 import androidx.activity.OnBackPressedCallback
-import androidx.activity.viewModels
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
-import com.example.core_ui.base.BindingActivity
-import dagger.hilt.android.AndroidEntryPoint
+import com.example.core_ui.base.BindingFragment
+import com.example.core_ui.fragment.snackBar
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import org.sopt.dosopttemplate.R
 import org.sopt.dosopttemplate.core.context.navigateTo
-import org.sopt.dosopttemplate.core.context.snackBar
-import org.sopt.dosopttemplate.databinding.ActivityMainBinding
+import org.sopt.dosopttemplate.databinding.FragmentMyPageBinding
 import org.sopt.dosopttemplate.features.account.SignInActivity
 import org.sopt.dosopttemplate.features.account.SignInViewModel
 import org.sopt.dosopttemplate.features.account.model.User
 
-@AndroidEntryPoint
-class MainActivity : BindingActivity<ActivityMainBinding>(R.layout.activity_main) {
+class MyPageFragment : BindingFragment<FragmentMyPageBinding>(R.layout.fragment_my_page) {
 
     private val signInViewModel by viewModels<SignInViewModel>()
 
@@ -25,7 +23,7 @@ class MainActivity : BindingActivity<ActivityMainBinding>(R.layout.activity_main
         override fun handleOnBackPressed() {
             if (doubleBackToExitPressedOnce) {
                 remove()
-                finish()
+                requireActivity().finish()
             } else {
                 doubleBackToExitPressedOnce = true
                 snackBar(binding.root) { getString(R.string.message_back_to_exit_pressed) }
@@ -39,7 +37,7 @@ class MainActivity : BindingActivity<ActivityMainBinding>(R.layout.activity_main
 
     override fun initView() {
         signInViewModel.getUserInformation()?.let { setMyPageInformation(it) }
-        this.onBackPressedDispatcher.addCallback(this, callback)
+        requireActivity().onBackPressedDispatcher.addCallback(this, callback)
         setClickEventOnSignOutLabelButton()
     }
 
@@ -55,7 +53,7 @@ class MainActivity : BindingActivity<ActivityMainBinding>(R.layout.activity_main
     private fun setClickEventOnSignOutLabelButton() {
         binding.btnMainSignOutLabel.setOnClickListener {
             signInViewModel.setCheckSignIn(false)
-            navigateTo<SignInActivity>()
+            requireActivity().navigateTo<SignInActivity>()
         }
     }
 

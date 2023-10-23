@@ -48,6 +48,7 @@ dependencies {
     implementation(AndroidX.APP_COMPAT)
     implementation(AndroidX.CONSTRAINT)
     implementation(AndroidX.ACTIVITY)
+    implementation(AndroidX.FRAGMENT_KTX)
     implementation(AndroidX.LIFECYCLE_VIEWMODEL_KTX)
     implementation(AndroidX.SHARED_PREFERENCE)
 
