@@ -12,7 +12,7 @@ sealed class Profile {
         val melonMusic: String?,
     ) : Profile()
 
-    data class birthdayFriend(
+    data class BirthdayFriend(
         val image: String?,
         val name: String,
         val birthday: String

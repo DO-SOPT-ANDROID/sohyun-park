@@ -6,6 +6,6 @@ import org.sopt.dosopttemplate.features.home.model.Profile
 
 class BirthdayFriendProfileViewHolder(private val binding: ItemHomeBirthdayFriendBinding) :
     RecyclerView.ViewHolder(binding.root) {
-    fun onBind(data: Profile.birthdayFriend) {
+    fun onBind(data: Profile.BirthdayFriend) {
     }
 }
