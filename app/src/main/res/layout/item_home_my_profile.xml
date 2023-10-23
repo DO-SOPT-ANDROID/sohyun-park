@@ -43,7 +43,7 @@
             android:layout_height="wrap_content"
             android:background="@drawable/shape_grey400_stroke_20_rect"
             android:paddingHorizontal="10dp"
-            android:paddingVertical="2dp"
+            android:paddingVertical="4dp"
             android:text="@string/tv_item_home_my_profile_statue_message"
             android:textAppearance="@style/TextAppearance.DoSopt.Body03"
             android:textColor="@color/grey_600"
