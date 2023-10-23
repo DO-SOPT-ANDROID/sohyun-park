@@ -20,7 +20,7 @@ class SplashActivity : AppCompatActivity() {
 
     private fun autoSignIn() {
         if (viewModel.getCheckSignIn()) {
-            navigateTo<MyPageActivity>()
+            navigateTo<MainActivity>()
         } else {
             navigateTo<SignInActivity>()
         }

@@ -9,6 +9,7 @@ import org.sopt.dosopttemplate.core.context.navigateTo
 import org.sopt.dosopttemplate.core.context.snackBar
 import org.sopt.dosopttemplate.core.context.toast
 import org.sopt.dosopttemplate.databinding.ActivitySignInBinding
+import org.sopt.dosopttemplate.features.MainActivity
 import org.sopt.dosopttemplate.features.account.model.User
 
 @AndroidEntryPoint
@@ -70,6 +71,6 @@ class SignInActivity : BindingActivity<ActivitySignInBinding>(R.layout.activity_
     private fun handleSignInSuccess() {
         viewModel.setCheckSignIn(true)
         toast(getString(R.string.success_message_valid_sign_in))
-        navigateTo<MyPageActivity>()
+        navigateTo<MainActivity>()
     }
 }
