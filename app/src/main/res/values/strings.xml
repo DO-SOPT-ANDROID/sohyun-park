@@ -29,4 +29,8 @@
     <string name="menu_do_android_label">DO ANDROID</string>
     <string name="menu_home_label">홈</string>
     <string name="menu_my_page_label">마이페이지</string>
+    <string name="iv_content_description_item_home_profile_image">나의 프로필 사진입니다.</string>
+    <string name="iv_content_description_item_home_my_profile_detail">나의 프로필 더보기입니다.</string>
+    <string name="tv_dummy_data">테스트테스트테스트테스트테스트테스트테스트테스트테스트테스트</string>
+    <string name="tv_item_home_my_profile_statue_message">상태메시지</string>
 </resources>

@@ -62,6 +62,7 @@ dependencies {
 
     // Third-Party
     implementation(Jakewharton.TIMBER)
+    implementation(ThirdParty.COIL)
 
     // Kotlin
     implementation(KotlinX.KOTLINX_SERIALIZATION)
