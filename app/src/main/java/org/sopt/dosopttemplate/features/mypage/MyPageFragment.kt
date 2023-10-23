@@ -1,4 +1,4 @@
-package org.sopt.dosopttemplate.features
+package org.sopt.dosopttemplate.features.mypage
 
 import androidx.fragment.app.viewModels
 import com.example.core_ui.base.BindingFragment

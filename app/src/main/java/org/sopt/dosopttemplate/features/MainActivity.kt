@@ -12,6 +12,9 @@ import kotlinx.coroutines.launch
 import org.sopt.dosopttemplate.R
 import org.sopt.dosopttemplate.core.context.snackBar
 import org.sopt.dosopttemplate.databinding.ActivityMainBinding
+import org.sopt.dosopttemplate.features.doandroid.DoAndroidFragment
+import org.sopt.dosopttemplate.features.home.HomeFragment
+import org.sopt.dosopttemplate.features.mypage.MyPageFragment
 
 @AndroidEntryPoint
 class MainActivity : BindingActivity<ActivityMainBinding>(R.layout.activity_main) {

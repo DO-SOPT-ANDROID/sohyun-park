@@ -1,4 +1,4 @@
-package org.sopt.dosopttemplate.features
+package org.sopt.dosopttemplate.features.doandroid
 
 import com.example.core_ui.base.BindingFragment
 import dagger.hilt.android.AndroidEntryPoint
