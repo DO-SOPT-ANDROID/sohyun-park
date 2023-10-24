@@ -39,13 +39,18 @@ class MainActivity : BindingActivity<ActivityMainBinding>(R.layout.activity_main
     override fun initView() {
         setFragment()
         setClickEventOnBottomNavigationItem()
-        binding.bnvMain.itemIconTintList = null
+        setBottomNavigation()
         onBackPressedDispatcher.addCallback(this, callback)
     }
 
     private fun setFragment() {
         val currentFragment = supportFragmentManager.findFragmentById(R.id.fcv_main)
         currentFragment ?: navigateTo<HomeFragment>()
+    }
+
+    private fun setBottomNavigation() {
+        binding.bnvMain.selectedItemId = R.id.menu_home
+        binding.bnvMain.itemIconTintList = null
     }
 
     private fun setClickEventOnBottomNavigationItem() {
