@@ -3,6 +3,28 @@
     "image": "https://github.com/DO-SOPT-ANDROID/sohyun-park/assets/98076050/f4c286d3-bea5-4b4a-845d-cbdac25ff5c4",
     "name": "박소현"
   },
+  "birthday_friend": [
+    {
+      "image": "https://github.com/DO-SOPT-ANDROID/sohyun-park/assets/98076050/d398bf70-3639-476b-bcaf-2d7ffce89549",
+      "name": "안팟짱 이태희",
+      "birthday": "8월 6일"
+    },
+    {
+      "image": "https://github.com/DO-SOPT-ANDROID/sohyun-park/assets/98076050/01ec8aaa-6c09-4359-ac69-86f2f4975d6f",
+      "name": "아코 허민회",
+      "birthday": "10월 5일"
+    },
+    {
+      "image": "https://github.com/DO-SOPT-ANDROID/sohyun-park/assets/98076050/071612a3-6fce-4d91-8f8a-ac7450be21bb",
+      "name": "아코 최준서",
+      "birthday": "5월 11일"
+    },
+    {
+      "image": "https://github.com/DO-SOPT-ANDROID/sohyun-park/assets/98076050/ed6bd602-0ab0-4c37-bcfb-23ebcf5300fe",
+      "name": "아코 엄현지",
+      "birthday": "8월 7일"
+    }
+  ],
   "friend": [
     {
       "image": "https://github.com/DO-SOPT-ANDROID/sohyun-park/assets/98076050/c74a5a85-6b70-4c3e-9d41-4dc7df819f79",
@@ -128,28 +150,6 @@
       "image": "https://github.com/DO-SOPT-ANDROID/sohyun-park/assets/98076050/377f469b-be4a-439e-89d6-2f1ef1047e07",
       "name": "YB 이연진",
       "melon_music": ""
-    }
-  ],
-  "birthday_friend": [
-    {
-      "image": "https://github.com/DO-SOPT-ANDROID/sohyun-park/assets/98076050/d398bf70-3639-476b-bcaf-2d7ffce89549",
-      "name": "안팟짱 이태희",
-      "birthday": "8월 6일"
-    },
-    {
-      "image": "https://github.com/DO-SOPT-ANDROID/sohyun-park/assets/98076050/01ec8aaa-6c09-4359-ac69-86f2f4975d6f",
-      "name": "아코 허민회",
-      "birthday": "10월 5일"
-    },
-    {
-      "image": "https://github.com/DO-SOPT-ANDROID/sohyun-park/assets/98076050/071612a3-6fce-4d91-8f8a-ac7450be21bb",
-      "name": "아코 최준서",
-      "birthday": "5월 11일"
-    },
-    {
-      "image": "https://github.com/DO-SOPT-ANDROID/sohyun-park/assets/98076050/ed6bd602-0ab0-4c37-bcfb-23ebcf5300fe",
-      "name": "아코 엄현지",
-      "birthday": "8월 7일"
     }
   ]
 }
