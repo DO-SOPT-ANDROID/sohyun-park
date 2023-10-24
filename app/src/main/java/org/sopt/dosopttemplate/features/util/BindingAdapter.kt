@@ -16,6 +16,6 @@ fun ImageView.setCircleImage(img: String?) {
     val imageResource = if (img.isNullOrEmpty()) R.drawable.img_empty_profile_image else img
 
     load(imageResource) {
-        transformations(RoundedCornersTransformation(500f))
+        transformations(RoundedCornersTransformation(60f))
     }
 }

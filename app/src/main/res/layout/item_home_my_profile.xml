@@ -13,13 +13,13 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingVertical="20dp">
+        android:paddingVertical="40dp">
 
         <ImageView
             android:id="@+id/iv_item_home_my_profile_image"
             setCircleImage="@{profile.image}"
             android:layout_width="0dp"
-            android:layout_height="100dp"
+            android:layout_height="50dp"
             android:contentDescription="@string/iv_content_description_item_home_profile_image"
             app:layout_constraintDimensionRatio="1"
             app:layout_constraintStart_toStartOf="parent"
@@ -28,15 +28,16 @@
 
         <TextView
             android:id="@+id/tv_item_home_my_profile_name"
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="10dp"
+            android:drawablePadding="5dp"
             android:maxLines="1"
             android:text="@{profile.name}"
+            android:textAlignment="textStart"
             android:textAppearance="@style/TextAppearance.DoSopt.Body01"
             app:drawableEndCompat="@drawable/ic_my_profile_detail_grey_24"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@id/tv_item_home_my_profile_status_message"
             app:layout_constraintStart_toEndOf="@id/iv_item_home_my_profile_image"
             app:layout_constraintTop_toTopOf="parent"
             tools:text="@string/tv_dummy_data" />
@@ -47,6 +48,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@drawable/shape_grey400_stroke_20_rect"
+            android:gravity="center"
             android:paddingHorizontal="10dp"
             android:paddingVertical="4dp"
             android:text="@string/tv_item_home_my_profile_statue_message"
