@@ -27,14 +27,13 @@ class HomeFragment : BindingFragment<FragmentHomeBinding>(R.layout.fragment_home
             when (it) {
                 is UiState.Loading -> {}
                 is UiState.Success -> {
-                    Timber.d("profile 데이터 수신 성공")
                     binding.rvHomeProfile.adapter = HomeAdapter(requireContext()).apply {
                         setDataList(it.data.toProfileList())
                     }
                 }
 
                 is UiState.Failure -> {
-                    Timber.d("profile 데이터 수신 실패")
+                    Timber.d(getString(R.string.error_message_get_profile_data))
                 }
             }
         }.launchIn(lifecycleScope)

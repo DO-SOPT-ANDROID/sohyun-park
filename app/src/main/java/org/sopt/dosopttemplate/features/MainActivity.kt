@@ -38,8 +38,8 @@ class MainActivity : BindingActivity<ActivityMainBinding>(R.layout.activity_main
 
     override fun initView() {
         setFragment()
-        setClickEventOnBottomNavigationItem()
         setBottomNavigation()
+        setClickEventOnBottomNavigationItem()
         onBackPressedDispatcher.addCallback(this, callback)
     }
 
