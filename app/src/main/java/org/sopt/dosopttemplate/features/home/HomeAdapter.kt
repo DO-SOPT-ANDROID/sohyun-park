@@ -34,13 +34,13 @@ class HomeAdapter(context: Context) : RecyclerView.Adapter<ViewHolder>() {
             }
 
             VIEW_TYPE_BIRTHDAY_FRIEND_PROFILE -> {
-                val binding = ItemHomeFriendProfileBinding.inflate(inflater, parent, false)
-                FriendProfileViewHolder(binding)
+                val binding = ItemHomeBirthdayFriendBinding.inflate(inflater, parent, false)
+                BirthdayFriendProfileViewHolder(binding)
             }
 
             else -> {
-                val binding = ItemHomeBirthdayFriendBinding.inflate(inflater, parent, false)
-                BirthdayFriendProfileViewHolder(binding)
+                val binding = ItemHomeFriendProfileBinding.inflate(inflater, parent, false)
+                FriendProfileViewHolder(binding)
             }
         }
     }
@@ -48,7 +48,12 @@ class HomeAdapter(context: Context) : RecyclerView.Adapter<ViewHolder>() {
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         when (val data = dataList[position]) {
             is Profile.My -> (holder as MyProfileViewHolder).run { onBind(data) }
-            is Profile.BirthdayFriend -> (holder as BirthdayFriendProfileViewHolder).run { onBind(data) }
+            is Profile.BirthdayFriend -> (holder as BirthdayFriendProfileViewHolder).run {
+                onBind(
+                    data
+                )
+            }
+
             is Profile.Friend -> (holder as FriendProfileViewHolder).run { onBind(data) }
         }
     }

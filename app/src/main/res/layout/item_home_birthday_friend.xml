@@ -5,6 +5,9 @@
 
     <data>
 
+        <variable
+            name="profile"
+            type="org.sopt.dosopttemplate.features.home.model.Profile.BirthdayFriend" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -14,6 +17,7 @@
 
         <ImageView
             android:id="@+id/iv_item_home_birthday_friend_profile_image"
+            setCircleImage="@{profile.image}"
             android:layout_width="0dp"
             android:layout_height="80dp"
             android:contentDescription="@string/iv_content_description_item_home_friend_profile_image"
@@ -28,6 +32,7 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="10dp"
             android:maxLines="1"
+            android:text="@{profile.name}"
             android:textAppearance="@style/TextAppearance.DoSopt.Body02"
             app:drawableEndCompat="@drawable/ic_birthday_profile_cake_pink_24"
             app:layout_constraintBottom_toTopOf="@id/tv_item_home_birthday_friend_profile_day"
@@ -41,6 +46,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
+            android:text="@{profile.birthday}"
             android:textAppearance="@style/TextAppearance.DoSopt.Body03"
             android:textColor="@color/grey_600"
             app:layout_constraintBottom_toBottomOf="@id/iv_item_home_birthday_friend_profile_image"

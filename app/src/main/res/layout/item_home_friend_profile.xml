@@ -5,6 +5,9 @@
 
     <data>
 
+        <variable
+            name="profile"
+            type="org.sopt.dosopttemplate.features.home.model.Profile.Friend" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -14,6 +17,7 @@
 
         <ImageView
             android:id="@+id/iv_item_home_friend_profile_image"
+            setCircleImage="@{profile.image}"
             android:layout_width="0dp"
             android:layout_height="80dp"
             android:contentDescription="@string/iv_content_description_item_home_friend_profile_image"
@@ -28,6 +32,7 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="10dp"
             android:maxLines="1"
+            android:text="@{profile.name}"
             android:textAppearance="@style/TextAppearance.DoSopt.Body02"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@id/tv_item_home_friend_profile_melon_music"
@@ -46,6 +51,7 @@
             android:maxLines="1"
             android:paddingHorizontal="10dp"
             android:paddingVertical="4dp"
+            android:text="@{profile.melonMusic}"
             android:textAppearance="@style/TextAppearance.DoSopt.Body03"
             android:textColor="@color/grey_600"
             app:drawableEndCompat="@drawable/ic_friend_profile_melon_music_green_24"

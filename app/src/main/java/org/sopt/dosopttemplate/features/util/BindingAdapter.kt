@@ -13,11 +13,9 @@ fun loadImage(view: ImageView, url: String?) {
 
 @BindingAdapter("setCircleImage")
 fun ImageView.setCircleImage(img: String?) {
-    if (img.isNullOrEmpty()) {
-        load(R.drawable.img_empty_profile_image)
-    } else {
-        load(img) {
-            transformations(RoundedCornersTransformation(500f))
-        }
+    val imageResource = if (img.isNullOrEmpty()) R.drawable.img_empty_profile_image else img
+
+    load(imageResource) {
+        transformations(RoundedCornersTransformation(500f))
     }
 }

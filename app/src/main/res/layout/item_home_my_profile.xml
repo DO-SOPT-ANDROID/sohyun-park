@@ -5,6 +5,9 @@
 
     <data>
 
+        <variable
+            name="profile"
+            type="org.sopt.dosopttemplate.features.home.model.Profile.My" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -14,6 +17,7 @@
 
         <ImageView
             android:id="@+id/iv_item_home_my_profile_image"
+            setCircleImage="@{profile.image}"
             android:layout_width="0dp"
             android:layout_height="100dp"
             android:contentDescription="@string/iv_content_description_item_home_profile_image"
@@ -28,6 +32,7 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="10dp"
             android:maxLines="1"
+            android:text="@{profile.name}"
             android:textAppearance="@style/TextAppearance.DoSopt.Body01"
             app:drawableEndCompat="@drawable/ic_my_profile_detail_grey_24"
             app:layout_constraintBottom_toBottomOf="parent"

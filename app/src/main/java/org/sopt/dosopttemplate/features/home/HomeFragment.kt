@@ -2,8 +2,10 @@ package org.sopt.dosopttemplate.features.home
 
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.flowWithLifecycle
+import androidx.lifecycle.lifecycleScope
 import com.example.core_ui.base.BindingFragment
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import org.sopt.dosopttemplate.R
 import org.sopt.dosopttemplate.core.view.UiState
@@ -25,6 +27,7 @@ class HomeFragment : BindingFragment<FragmentHomeBinding>(R.layout.fragment_home
             when (it) {
                 is UiState.Loading -> {}
                 is UiState.Success -> {
+                    Timber.d("profile 데이터 수신 성공")
                     binding.rvHomeProfile.adapter = HomeAdapter(requireContext()).apply {
                         setDataList(it.data.toProfileList())
                     }
@@ -34,8 +37,6 @@ class HomeFragment : BindingFragment<FragmentHomeBinding>(R.layout.fragment_home
                     Timber.d("profile 데이터 수신 실패")
                 }
             }
-        }
+        }.launchIn(lifecycleScope)
     }
-
-
 }
