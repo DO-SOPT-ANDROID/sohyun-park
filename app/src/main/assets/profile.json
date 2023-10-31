@@ -1,0 +1,155 @@
+{
+  "my": {
+    "image": "https://github.com/DO-SOPT-ANDROID/sohyun-park/assets/98076050/f4c286d3-bea5-4b4a-845d-cbdac25ff5c4",
+    "name": "박소현"
+  },
+  "birthday_friend": [
+    {
+      "image": "https://github.com/DO-SOPT-ANDROID/sohyun-park/assets/98076050/d398bf70-3639-476b-bcaf-2d7ffce89549",
+      "name": "안팟짱 이태희",
+      "birthday": "8월 6일"
+    },
+    {
+      "image": "https://github.com/DO-SOPT-ANDROID/sohyun-park/assets/98076050/01ec8aaa-6c09-4359-ac69-86f2f4975d6f",
+      "name": "아코 허민회",
+      "birthday": "10월 5일"
+    },
+    {
+      "image": "https://github.com/DO-SOPT-ANDROID/sohyun-park/assets/98076050/071612a3-6fce-4d91-8f8a-ac7450be21bb",
+      "name": "아코 최준서",
+      "birthday": "5월 11일"
+    },
+    {
+      "image": "https://github.com/DO-SOPT-ANDROID/sohyun-park/assets/98076050/ed6bd602-0ab0-4c37-bcfb-23ebcf5300fe",
+      "name": "아코 엄현지",
+      "birthday": "8월 7일"
+    }
+  ],
+  "friend": [
+    {
+      "image": "https://github.com/DO-SOPT-ANDROID/sohyun-park/assets/98076050/c74a5a85-6b70-4c3e-9d41-4dc7df819f79",
+      "name": "OB 김지영",
+      "melon_music": ""
+    },
+    {
+      "image": "",
+      "name": "OB 이삭",
+      "melon_music": ""
+    },
+    {
+      "image": "",
+      "name": "OB 배지현",
+      "melon_music": ""
+    },
+    {
+      "image": "https://github.com/DO-SOPT-ANDROID/sohyun-park/assets/98076050/49c829ad-c995-4950-9027-3bb2c736e2f6",
+      "name": "OB 서재원",
+      "melon_music": ""
+    },
+    {
+      "image": "",
+      "name": "OB 우상욱",
+      "melon_music": ""
+    },
+    {
+      "image": "",
+      "name": "OB 박강희",
+      "melon_music": "HAPPY - NF"
+    },
+    {
+      "image": "https://github.com/DO-SOPT-ANDROID/sohyun-park/assets/98076050/22820613-2a7e-4712-a720-c7c64ba97275",
+      "name": "OB 이준희",
+      "melon_music": "CHRISTIAN - Zior Park"
+    },
+    {
+      "image": "https://github.com/DO-SOPT-ANDROID/sohyun-park/assets/98076050/103c1c02-934d-4944-bf9c-2045b2794efa",
+      "name": "OB 곽의진",
+      "melon_music": "Steal The Show (From '엘리멘탈')"
+    },
+    {
+      "image": "https://github.com/DO-SOPT-ANDROID/sohyun-park/assets/98076050/4f4d87f4-ab42-48c8-be48-a6390c5a2337",
+      "name": "OB 김상호",
+      "melon_music": "Lean - Tuesday Beach Club"
+    },
+    {
+      "image": "",
+      "name": "YB 김민우",
+      "melon_music": ""
+    },
+    {
+      "image": "https://github.com/DO-SOPT-ANDROID/sohyun-park/assets/98076050/31bdd50a-d287-4c55-8396-cb23b028d2e7",
+      "name": "YB 김민정",
+      "melon_music": ""
+    },
+    {
+      "image": "",
+      "name": "YB 배찬우",
+      "melon_music": ""
+    },
+    {
+      "image": "https://github.com/DO-SOPT-ANDROID/sohyun-park/assets/98076050/e7c898b5-8e9e-4946-81bb-8728c06a086f",
+      "name": "YB 손명지",
+      "melon_music": "Again to Goshintai - RADWIMPS"
+    },
+    {
+      "image": "",
+      "name": "YB 조관희",
+      "melon_music": ""
+    },
+    {
+      "image": "",
+      "name": "YB 강유리",
+      "melon_music": ""
+    },
+    {
+      "image": "https://github.com/DO-SOPT-ANDROID/sohyun-park/assets/98076050/6930a881-8cd4-488a-add6-f8cdf6a1a89d",
+      "name": "YB 경지현",
+      "melon_music": "건물 사이에 피어난 장미 (Rose Blossom)"
+    },
+    {
+      "image": "",
+      "name": "YB 김언지",
+      "melon_music": ""
+    },
+    {
+      "image": "https://github.com/DO-SOPT-ANDROID/sohyun-park/assets/98076050/e8bb29d1-25cb-4616-8ee6-ef0c75c1e573",
+      "name": "YB 박동민",
+      "melon_music": ""
+    },
+    {
+      "image": "",
+      "name": "YB 박채은",
+      "melon_music": ""
+    },
+    {
+      "image": "https://github.com/DO-SOPT-ANDROID/sohyun-park/assets/98076050/ad26853f-0f4e-445f-8ec9-1b1abd33ab23",
+      "name": "YB 박호연",
+      "melon_music": "Love U Like That - Lauv"
+    },
+    {
+      "image": "https://github.com/DO-SOPT-ANDROID/sohyun-park/assets/98076050/70832563-0e85-4ca4-8c1b-0cd4fe04e656",
+      "name": "YB 이유빈",
+      "melon_music": "You & Me (Coachella ver.)"
+    },
+    {
+      "image": "",
+      "name": "YB 조세연",
+      "melon_music": ""
+    },
+    {
+      "image": "",
+      "name": "YB 최민영",
+      "melon_music": "Somebody - 디오 (D.O.)"
+    },
+    {
+      "image": "https://github.com/DO-SOPT-ANDROID/sohyun-park/assets/98076050/4ef7827b-91e6-4ba0-a06e-224c88d9985f",
+      "name": "YB 하지은",
+      "melon_music": "Beautiful Feeling - Day6"
+    },
+    {
+      "image": "https://github.com/DO-SOPT-ANDROID/sohyun-park/assets/98076050/377f469b-be4a-439e-89d6-2f1ef1047e07",
+      "name": "YB 이연진",
+      "melon_music": ""
+    }
+  ]
+}

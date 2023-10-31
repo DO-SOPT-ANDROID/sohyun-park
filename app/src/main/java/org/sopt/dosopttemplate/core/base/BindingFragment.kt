@@ -13,9 +13,10 @@ abstract class BindingFragment<T : ViewDataBinding>(
     @LayoutRes private val layoutRes: Int,
 ) : Fragment() {
     private var _binding: T? = null
-    protected val binding get() = requireNotNull(_binding) {
+    protected val binding
+        get() = requireNotNull(_binding) {
 
-    }
+        }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -27,6 +28,12 @@ abstract class BindingFragment<T : ViewDataBinding>(
         return binding.root
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        initView()
+    }
+
+    protected abstract fun initView()
 
     override fun onDestroyView() {
         _binding = null

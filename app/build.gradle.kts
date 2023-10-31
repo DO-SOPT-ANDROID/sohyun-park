@@ -2,6 +2,7 @@ plugins {
     id("com.android.application")
     kotlin("android")
     kotlin("kapt")
+    kotlin("plugin.serialization") version Versions.KOTLIN_VERSION
     id("dagger.hilt.android.plugin")
     id("kotlin-parcelize")
 }
@@ -48,6 +49,7 @@ dependencies {
     implementation(AndroidX.APP_COMPAT)
     implementation(AndroidX.CONSTRAINT)
     implementation(AndroidX.ACTIVITY)
+    implementation(AndroidX.FRAGMENT_KTX)
     implementation(AndroidX.LIFECYCLE_VIEWMODEL_KTX)
     implementation(AndroidX.SHARED_PREFERENCE)
 
@@ -61,6 +63,7 @@ dependencies {
 
     // Third-Party
     implementation(Jakewharton.TIMBER)
+    implementation(ThirdParty.COIL)
 
     // Kotlin
     implementation(KotlinX.KOTLINX_SERIALIZATION)

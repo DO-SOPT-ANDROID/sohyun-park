@@ -23,7 +23,21 @@
     <string name="success_message_sign_up">회원가입에 성공했습니다.</string>
 
     <!-- main -->
+    <string name="message_back_to_exit_pressed">뒤로 가기 버튼을 한 번 더 누르면 종료됩니다.</string>
+    <string name="menu_do_android_label">DO ANDROID</string>
+    <string name="menu_home_label">홈</string>
+    <string name="menu_my_page_label">마이페이지</string>
+    <string name="tv_dummy_data">테스트테스트</string>
+
+    <!-- my page -->
     <string name="content_description_iv_main_profile">프로필 사진입니다.</string>
     <string name="btn_main_sign_out_label">SIGN OUT</string>
-    <string name="message_back_to_exit_pressed">뒤로 가기 버튼을 한 번 더 누르면 종료됩니다.</string>
+
+    <!-- home -->
+    <string name="iv_content_description_item_home_profile_image">나의 프로필 사진입니다.</string>
+    <string name="iv_content_description_item_home_friend_profile_image">친구 프로필 사진입니다.</string>
+    <string name="iv_content_description_item_home_my_profile_detail">나의 프로필 더보기입니다.</string>
+    <string name="tv_item_home_my_profile_statue_message">상태메시지</string>
+    <string name="tv_item_home_birthday_friend_profile_gift">선물하기</string>
+    <string name="error_message_get_profile_data">profile 데이터 수신 실패</string>
 </resources>

@@ -9,21 +9,27 @@
     </style>
 
     <style name="TextAppearance.DoSopt.Title">
-        <item name="fontFamily">@font/font_baeum_bold</item>
+        <item name="fontFamily">@font/font_pretendard_bold</item>
         <item name="android:textSize">28sp</item>
         <item name="lineHeight">37dp</item>
     </style>
 
     <style name="TextAppearance.DoSopt.Body01">
-        <item name="fontFamily">@font/font_baeum_regular</item>
+        <item name="fontFamily">@font/font_pretendard_medium</item>
         <item name="android:textSize">22sp</item>
         <item name="lineHeight">24dp</item>
     </style>
 
     <style name="TextAppearance.DoSopt.Body02">
-        <item name="fontFamily">@font/font_baeum_regular</item>
+        <item name="fontFamily">@font/font_pretendard_medium</item>
         <item name="android:textSize">20sp</item>
         <item name="lineHeight">22dp</item>
+    </style>
+
+    <style name="TextAppearance.DoSopt.Body03">
+        <item name="fontFamily">@font/font_pretendard_medium</item>
+        <item name="android:textSize">14sp</item>
+        <item name="lineHeight">18dp</item>
     </style>
 
 </resources>
