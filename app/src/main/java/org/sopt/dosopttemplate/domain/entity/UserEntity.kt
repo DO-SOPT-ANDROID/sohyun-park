@@ -1,18 +1,18 @@
-package org.sopt.dosopttemplate.features.account.model
+package org.sopt.dosopttemplate.domain.entity
 
 import android.os.Parcelable
 import kotlinx.parcelize.Parcelize
-import org.sopt.dosopttemplate.domain.entity.UserEntity
+import org.sopt.dosopttemplate.features.account.model.User
 
 
 @Parcelize
-data class User(
+data class UserEntity(
     val id: String,
     val pw: String,
     val nickname: String,
     val drinkingCapacity: String
 ) : Parcelable {
-    fun toUserEntity() = UserEntity(
+    fun toUser() = User(
         id, pw, nickname, drinkingCapacity
     )
 }

@@ -1,7 +1,8 @@
-package com.example.core_ui.context
+package org.sopt.dosopttemplate.core.context
 
 import android.app.Activity
 import android.content.Context
+import android.content.Intent
 import android.view.View
 import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
@@ -32,4 +33,11 @@ fun Context.drawableOf(@DrawableRes resId: Int) = ContextCompat.getDrawable(this
 fun Context.hideKeyboard(view: View) {
     val inputMethodManager = getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager
     inputMethodManager.hideSoftInputFromWindow(view.windowToken, 0)
+}
+
+inline fun <reified T : Activity> Context.navigateTo() {
+    Intent(this, T::class.java).apply {
+        addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)
+        startActivity(this)
+    }
 }

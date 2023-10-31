@@ -1,11 +1,11 @@
 import org.gradle.api.JavaVersion
 
 object Versions {
-    const val JVM_VERSION = "11"
-    val JAVA_VERSION = JavaVersion.VERSION_11
+    const val JVM_VERSION = "17"
+    val JAVA_VERSION = JavaVersion.VERSION_17
 
     const val GRADLE = "7.4.2"
-    const val KOTLIN_VERSION = "1.7.20"
+    const val KOTLIN_VERSION = "1.8.20"
     const val KOTLIN_SERIALIZATION_VERSION = "1.4.1"
 
     const val APP_COMPAT = "1.6.1"
@@ -20,8 +20,12 @@ object Versions {
     const val ESPRESSO_CORE = "3.5.1"
 
     const val MATERIAL = "1.5.0"
+    const val HILT = "2.44"
+    const val GSON = "2.10.1"
 
     const val TIMBER = "5.0.1"
 
     const val COIL = "2.3.0"
+
+    const val SHARED_PREFERENCE_VERSION = "1.1.0-alpha06"
 }

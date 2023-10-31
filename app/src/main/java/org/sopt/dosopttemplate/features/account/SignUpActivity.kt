@@ -1,29 +1,33 @@
 package org.sopt.dosopttemplate.features.account
 
-import android.content.Intent
+import androidx.activity.viewModels
+import androidx.lifecycle.flowWithLifecycle
+import androidx.lifecycle.lifecycleScope
 import com.example.core_ui.base.BindingActivity
-import com.example.core_ui.context.snackBar
-import com.example.core_ui.context.toast
+import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.flow.launchIn
+import kotlinx.coroutines.flow.onEach
 import org.sopt.dosopttemplate.R
-import org.sopt.dosopttemplate.core.view.DrinkingCapacityValidityCheck
-import org.sopt.dosopttemplate.core.view.IdValidityCheck
-import org.sopt.dosopttemplate.core.view.InvalidByBlank
-import org.sopt.dosopttemplate.core.view.InvalidByCondition
-import org.sopt.dosopttemplate.core.view.NicknameValidityCheck
-import org.sopt.dosopttemplate.core.view.PwValidityCheck
-import org.sopt.dosopttemplate.core.view.Valid
+import org.sopt.dosopttemplate.core.context.snackBar
+import org.sopt.dosopttemplate.core.context.toast
+import org.sopt.dosopttemplate.core.view.UiState
 import org.sopt.dosopttemplate.databinding.ActivitySignUpBinding
 import org.sopt.dosopttemplate.features.account.model.User
-import org.sopt.dosopttemplate.features.util.Account.SIGN_UP_INFORMATION
 
+@AndroidEntryPoint
 class SignUpActivity : BindingActivity<ActivitySignUpBinding>(R.layout.activity_sign_up) {
+
+    private val signUpViewModel by viewModels<SignUpViewModel>()
+    private val signInViewModel by viewModels<SignInViewModel>()
+
     override fun initView() {
         setClickEventOnSignUpLabelButton()
+        collectSignUpValidity()
     }
 
     private fun setClickEventOnSignUpLabelButton() {
         binding.btnSignUpSignupLabel.setOnClickListener {
-            handleSignUpSuccess(saveSignUpInformation())
+            signUpViewModel.getSignUpValidity(saveSignUpInformation())
         }
     }
 
@@ -38,61 +42,19 @@ class SignUpActivity : BindingActivity<ActivitySignUpBinding>(R.layout.activity_
         }
     }
 
-    private fun handleSignUpSuccess(inputInformation: User) {
-        with(inputInformation) {
-            if (checkIdValidity(id) && checkPwValidity(pw) && checkNicknameValidity(nickname) && checkDrinkingCapacityValidity(
-                    drinkingCapacity
-                )
-            ) {
-                val intent = Intent(this@SignUpActivity, SignInActivity::class.java)
-                intent.putExtra(SIGN_UP_INFORMATION, this)
-                setResult(RESULT_OK, intent)
-                showSignUpSuccessMessage()
-                finish()
+    private fun collectSignUpValidity() {
+        signUpViewModel.signUpValidity.flowWithLifecycle(lifecycle).onEach {
+            when (it) {
+                is UiState.Success -> handleSignUpSuccess(it.data)
+                is UiState.Failure -> snackBar(binding.root) { it.errorMessage }
+                is UiState.Loading -> {}
             }
-        }
-
+        }.launchIn(lifecycleScope)
     }
 
-    private fun checkIdValidity(id: String): Boolean {
-        return when (val idState = IdValidityCheck.validate(id)) {
-            is Valid -> return true
-            is InvalidByBlank -> showSignUpErrorMessage(idState.errorMessage)
-            is InvalidByCondition -> showSignUpErrorMessage(idState.errorMessage)
-        }
-    }
-
-    private fun checkPwValidity(pw: String): Boolean {
-        return when (val pwState = PwValidityCheck.validate(pw)) {
-            is Valid -> return true
-            is InvalidByBlank -> showSignUpErrorMessage(pwState.errorMessage)
-            is InvalidByCondition -> showSignUpErrorMessage(pwState.errorMessage)
-        }
-    }
-
-    private fun checkNicknameValidity(nickname: String): Boolean {
-        return when (val nicknameState = NicknameValidityCheck.validate(nickname)) {
-            is Valid -> return true
-            is InvalidByBlank -> showSignUpErrorMessage(nicknameState.errorMessage)
-            is InvalidByCondition -> showSignUpErrorMessage(nicknameState.errorMessage)
-        }
-    }
-
-    private fun checkDrinkingCapacityValidity(drinkingCapacity: String): Boolean {
-        return when (val drinkingCapacityState =
-            DrinkingCapacityValidityCheck.validate(drinkingCapacity)) {
-            is Valid -> return true
-            is InvalidByBlank -> showSignUpErrorMessage(drinkingCapacityState.errorMessage)
-            is InvalidByCondition -> showSignUpErrorMessage(drinkingCapacityState.errorMessage)
-        }
-    }
-
-    private fun showSignUpErrorMessage(errorMessage: String): Boolean {
-        snackBar(binding.root) { errorMessage }
-        return false
-    }
-
-    private fun showSignUpSuccessMessage() {
+    private fun handleSignUpSuccess(inputSignUpInformation: User) {
+        signInViewModel.setUserInformation(inputSignUpInformation)
         toast(getString(R.string.success_message_sign_up))
+        finish()
     }
 }

@@ -1,33 +1,65 @@
 package org.sopt.dosopttemplate.features.main
 
-import android.os.Build
+import androidx.activity.OnBackPressedCallback
+import androidx.activity.viewModels
+import androidx.lifecycle.lifecycleScope
 import com.example.core_ui.base.BindingActivity
+import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 import org.sopt.dosopttemplate.R
+import org.sopt.dosopttemplate.core.context.navigateTo
+import org.sopt.dosopttemplate.core.context.snackBar
 import org.sopt.dosopttemplate.databinding.ActivityMainBinding
+import org.sopt.dosopttemplate.features.account.SignInActivity
+import org.sopt.dosopttemplate.features.account.SignInViewModel
 import org.sopt.dosopttemplate.features.account.model.User
-import org.sopt.dosopttemplate.features.util.Account
 
-
+@AndroidEntryPoint
 class MainActivity : BindingActivity<ActivityMainBinding>(R.layout.activity_main) {
+
+    private val signInViewModel by viewModels<SignInViewModel>()
+
+    private val callback = object : OnBackPressedCallback(true) {
+        private var doubleBackToExitPressedOnce = false
+        override fun handleOnBackPressed() {
+            if (doubleBackToExitPressedOnce) {
+                remove()
+                finish()
+            } else {
+                doubleBackToExitPressedOnce = true
+                snackBar(binding.root) { getString(R.string.message_back_to_exit_pressed) }
+                lifecycleScope.launch {
+                    delay(BACK_TO_EXIT_DELAY_TIME)
+                    doubleBackToExitPressedOnce = false
+                }
+            }
+        }
+    }
+
     override fun initView() {
-        setMyPageInformation(getUserInformation())
+        signInViewModel.getUserInformation()?.let { setMyPageInformation(it) }
+        this.onBackPressedDispatcher.addCallback(this, callback)
+        setClickEventOnSignOutLabelButton()
     }
 
-    private fun getUserInformation(): User? {
-        val signUpInformation = intent.getSerializableExtra(Account.SIGN_UP_INFORMATION)
-        return when {
-            Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU -> signUpInformation as? User
-            signUpInformation is User -> signUpInformation
-            else -> null
-        }
-    }
-
-    private fun setMyPageInformation(user: User?) {
+    private fun setMyPageInformation(user: User) {
         with(binding) {
-            tvMainId.text = user?.id ?: getString(R.string.error_message_empty_data)
-            tvMainNickname.text = user?.nickname ?: getString(R.string.error_message_empty_data)
+            tvMainId.text = user.id
+            tvMainNickname.text = user.nickname
             tvMainDrinkingCapacity.text =
-                user?.drinkingCapacity ?: getString(R.string.error_message_empty_data)
+                user.drinkingCapacity
         }
+    }
+
+    private fun setClickEventOnSignOutLabelButton() {
+        binding.btnMainSignOutLabel.setOnClickListener {
+            signInViewModel.setCheckSignIn(false)
+            navigateTo<SignInActivity>()
+        }
+    }
+
+    companion object {
+        const val BACK_TO_EXIT_DELAY_TIME = 2000L
     }
 }
