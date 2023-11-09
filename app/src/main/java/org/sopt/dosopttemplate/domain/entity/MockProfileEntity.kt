@@ -2,24 +2,28 @@ package org.sopt.dosopttemplate.domain.entity
 
 
 data class MockProfileEntity(
-    val my: MyProfile,
-    val birthdayFriendProfile: List<BirthdayFriendProfile>,
-    val friendProfile: List<FriendProfile>
+    val my: Profile.MyProfile,
+    val birthdayFriendProfile: List<Profile.BirthdayFriendProfile>,
+    val friendProfile: List<Profile.FriendProfile>
 )
 
-data class MyProfile(
-    val image: String,
-    val name: String
-)
+sealed class Profile {
+    abstract val name: String
+    data class MyProfile(
+        val image: String,
+        override val name: String
+    ) : Profile()
 
-data class BirthdayFriendProfile(
-    val image: String,
-    val name: String,
-    val birthday: String
-)
+    data class BirthdayFriendProfile(
+        val image: String,
+        override val name: String,
+        val birthday: String
+    ): Profile()
 
-data class FriendProfile(
-    val image: String,
-    val name: String,
-    val melonMusic: String
-)
+    data class FriendProfile(
+        val image: String,
+        override val name: String,
+        val melonMusic: String
+    ): Profile()
+}
+
