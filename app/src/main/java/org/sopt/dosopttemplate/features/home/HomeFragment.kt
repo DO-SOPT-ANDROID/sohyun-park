@@ -28,7 +28,7 @@ class HomeFragment : BindingFragment<FragmentHomeBinding>(R.layout.fragment_home
                 is UiState.Loading -> {}
                 is UiState.Success -> {
                     binding.rvHomeProfile.adapter = HomeAdapter(requireContext()).apply {
-                        setDataList(it.data.toProfileList())
+                        submitList(it.data.toProfileList())
                     }
                 }
 

@@ -4,7 +4,7 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import org.sopt.dosopttemplate.data.datasource.HomeDataSource
 import org.sopt.dosopttemplate.domain.entity.MockProfileEntity
-import org.sopt.dosopttemplate.domain.entity.MyProfile
+import org.sopt.dosopttemplate.domain.entity.Profile
 import org.sopt.dosopttemplate.domain.repository.HomeRepository
 import timber.log.Timber
 import javax.inject.Inject
@@ -23,7 +23,7 @@ class HomeRepositoryImpl @Inject constructor(
             emit(
                 result.getOrDefault(
                     MockProfileEntity(
-                        MyProfile("test", "test"), emptyList(), emptyList()
+                        Profile.MyProfile("test", "test"), emptyList(), emptyList()
                     )
                 )
             )

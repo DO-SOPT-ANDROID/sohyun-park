@@ -2,10 +2,8 @@ package org.sopt.dosopttemplate.data.dto
 
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
-import org.sopt.dosopttemplate.domain.entity.BirthdayFriendProfile
-import org.sopt.dosopttemplate.domain.entity.FriendProfile
 import org.sopt.dosopttemplate.domain.entity.MockProfileEntity
-import org.sopt.dosopttemplate.domain.entity.MyProfile
+import org.sopt.dosopttemplate.domain.entity.Profile
 
 @Serializable
 data class MockProfileDto(
@@ -28,7 +26,7 @@ data class MockProfileDto(
 data class MyProfileDto(
     @SerialName("image") val image: String, @SerialName("name") val name: String
 ) {
-    fun toMyProfileEntity() = MyProfile(image, name)
+    fun toMyProfileEntity() = Profile.MyProfile(image, name)
 }
 
 @Serializable
@@ -37,7 +35,7 @@ data class BirthdayFriendProfileDto(
     @SerialName("name") val name: String,
     @SerialName("birthday") val birthday: String
 ) {
-    fun toBirthdayFriendProfileEntity() = BirthdayFriendProfile(image, name, birthday)
+    fun toBirthdayFriendProfileEntity() = Profile.BirthdayFriendProfile(image, name, birthday)
 }
 
 @Serializable
@@ -46,6 +44,6 @@ data class FriendProfileDto(
     @SerialName("name") val name: String,
     @SerialName("melon_music") val melonMusic: String
 ) {
-    fun toFriendProfileEntity() = FriendProfile(image, name, melonMusic)
+    fun toFriendProfileEntity() = Profile.FriendProfile(image, name, melonMusic)
 }
 
