@@ -19,7 +19,7 @@ object Versions {
     const val EXT_JUNIT = "1.1.5"
     const val ESPRESSO_CORE = "3.5.1"
 
-    const val MATERIAL = "1.5.0"
+    const val MATERIAL = "1.10.0"
     const val HILT = "2.44"
     const val GSON = "2.10.1"
 
