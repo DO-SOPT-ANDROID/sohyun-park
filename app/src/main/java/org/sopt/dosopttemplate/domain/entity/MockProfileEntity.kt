@@ -9,21 +9,23 @@ data class MockProfileEntity(
 
 sealed class Profile {
     abstract val name: String
+    abstract val image: String
+
     data class MyProfile(
-        val image: String,
+        override val image: String,
         override val name: String
     ) : Profile()
 
     data class BirthdayFriendProfile(
-        val image: String,
+        override val image: String,
         override val name: String,
         val birthday: String
-    ): Profile()
+    ) : Profile()
 
     data class FriendProfile(
-        val image: String,
+        override val image: String,
         override val name: String,
         val melonMusic: String
-    ): Profile()
+    ) : Profile()
 }
 
