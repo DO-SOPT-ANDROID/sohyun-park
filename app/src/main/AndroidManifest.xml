@@ -36,6 +36,9 @@
         <activity
             android:name=".features.MainActivity"
             android:exported="false" />
+        <activity
+            android:name=".features.doandroid.DoAndroidProfileDetailActivity"
+            android:exported="false" />
     </application>
 
 </manifest>
