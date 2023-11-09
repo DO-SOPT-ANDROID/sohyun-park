@@ -19,6 +19,7 @@ import org.sopt.dosopttemplate.features.mypage.MyPageFragment
 @AndroidEntryPoint
 class MainActivity : BindingActivity<ActivityMainBinding>(R.layout.activity_main) {
 
+
     private val callback = object : OnBackPressedCallback(true) {
         private var doubleBackToExitPressedOnce = false
         override fun handleOnBackPressed() {
@@ -40,6 +41,7 @@ class MainActivity : BindingActivity<ActivityMainBinding>(R.layout.activity_main
         setFragment()
         setBottomNavigation()
         setClickEventOnBottomNavigationItem()
+        setClickEventAgainOnBottomNavigationItem()
         onBackPressedDispatcher.addCallback(this, callback)
     }
 
@@ -61,6 +63,16 @@ class MainActivity : BindingActivity<ActivityMainBinding>(R.layout.activity_main
                 R.id.menu_my_page -> navigateTo<MyPageFragment>()
             }
             true
+        }
+    }
+
+    private fun setClickEventAgainOnBottomNavigationItem() {
+        binding.bnvMain.setOnItemReselectedListener {
+            val homeFragment =
+                supportFragmentManager.findFragmentById(R.id.fcv_main) as? HomeFragment
+            when (it.itemId) {
+                R.id.menu_home -> homeFragment?.run { setRecyclerviewSmoothScrollToTop() }
+            }
         }
     }
 

@@ -38,4 +38,8 @@ class HomeFragment : BindingFragment<FragmentHomeBinding>(R.layout.fragment_home
             }
         }.launchIn(lifecycleScope)
     }
+
+    fun setRecyclerviewSmoothScrollToTop() {
+        binding.rvHomeProfile.smoothScrollToPosition(0)
+    }
 }
