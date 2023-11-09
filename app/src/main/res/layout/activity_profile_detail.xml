@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="profile"
+            type="org.sopt.dosopttemplate.features.home.model.Profile" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/grey_300">
+
+        <ImageView
+            android:id="@+id/iv_profile_detail"
+            setCircleImage="@{profile.image}"
+            android:layout_width="0dp"
+            android:layout_height="100dp"
+            android:layout_marginBottom="150dp"
+            android:contentDescription="@string/iv_content_description_item_home_friend_profile_image"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintDimensionRatio="1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:src="@drawable/img_main_cat" />
+
+        <TextView
+            android:id="@+id/tv_profile_detail_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:text="@{profile.name}"
+            android:textAppearance="@style/TextAppearance.DoSopt.Body02"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/iv_profile_detail"
+            tools:text="@string/tv_dummy_data" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
