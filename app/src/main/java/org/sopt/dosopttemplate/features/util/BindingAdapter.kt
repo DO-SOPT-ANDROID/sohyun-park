@@ -8,7 +8,8 @@ import org.sopt.dosopttemplate.R
 
 @BindingAdapter("imageUrl")
 fun loadImage(view: ImageView, url: String?) {
-    view.load(url)
+    val imageResource = if (url.isNullOrEmpty()) R.drawable.img_empty_profile_image else url
+    view.load(imageResource)
 }
 
 @BindingAdapter("setCircleImage")
