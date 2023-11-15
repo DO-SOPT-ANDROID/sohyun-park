@@ -23,6 +23,8 @@ object TestDependencies {
 object KotlinX {
     const val KOTLINX_SERIALIZATION =
         "org.jetbrains.kotlinx:kotlinx-serialization-json:${Versions.KOTLIN_SERIALIZATION_VERSION}"
+    const val KOTLINX_COROUTINE =
+        "org.jetbrains.kotlinx:kotlinx-coroutines-android:${Versions.KOTLINX_COROUTINE}"
 }
 
 
@@ -39,4 +41,13 @@ object ThirdParty {
 
 object Jakewharton {
     const val TIMBER = "com.jakewharton.timber:timber:${Versions.TIMBER}"
+    const val CONVERTER = "com.jakewharton.retrofit:retrofit2-kotlinx-serialization-converter:0.8.0"
+}
+
+object SquareUp {
+    const val RETROFIT2 = "com.squareup.retrofit2:retrofit:${Versions.RETROFIT_VERSION}"
+    const val OKHTTP3_BOM = "com.squareup.okhttp3:okhttp-bom:${Versions.OKHTTP3_BOM}"
+    const val OKHTTP3 = "com.squareup.okhttp3:okhttp"
+    const val OKHTTP3_LOGGING = "com.squareup.okhttp3:logging-interceptor"
+
 }
