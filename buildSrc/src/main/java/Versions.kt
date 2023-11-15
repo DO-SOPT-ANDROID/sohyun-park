@@ -28,4 +28,9 @@ object Versions {
     const val COIL = "2.3.0"
 
     const val SHARED_PREFERENCE_VERSION = "1.1.0-alpha06"
+
+    const val RETROFIT_VERSION = "2.9.0"
+    const val OKHTTP3_BOM = "4.10.0"
+
+    const val KOTLINX_COROUTINE = "1.7.1"
 }
