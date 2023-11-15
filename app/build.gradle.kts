@@ -1,3 +1,5 @@
+import java.util.Properties
+
 plugins {
     id("com.android.application")
     kotlin("android")
@@ -19,6 +21,10 @@ android {
         versionName = AppConfig.VERSION_NAME
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+
+        buildConfigField("String", "BASE_URL", Properties().apply {
+            load(project.rootProject.file("local.properties").inputStream())
+        }["base.url"].toString())
     }
 
     buildTypes {
@@ -39,6 +45,7 @@ android {
     buildFeatures {
         dataBinding = true
         viewBinding = true
+        buildConfig = true
     }
 }
 
@@ -64,9 +71,15 @@ dependencies {
     // Third-Party
     implementation(Jakewharton.TIMBER)
     implementation(ThirdParty.COIL)
+    implementation(SquareUp.RETROFIT2)
+    implementation(SquareUp.OKHTTP3)
+    implementation(SquareUp.OKHTTP3_LOGGING)
+    implementation(SquareUp.OKHTTP3_BOM)
+    implementation(Jakewharton.CONVERTER)
 
     // Kotlin
     implementation(KotlinX.KOTLINX_SERIALIZATION)
+    implementation(KotlinX.KOTLINX_COROUTINE)
 
     //Hilt
     implementation(Google.HILT_ANDROID)
