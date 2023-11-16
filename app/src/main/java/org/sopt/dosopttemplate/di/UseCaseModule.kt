@@ -6,6 +6,8 @@ import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import org.sopt.dosopttemplate.domain.repository.AuthRepository
 import org.sopt.dosopttemplate.domain.repository.HomeRepository
+import org.sopt.dosopttemplate.domain.repository.ReqresRepository
+import org.sopt.dosopttemplate.domain.usecase.GetListUsersUseCase
 import org.sopt.dosopttemplate.domain.usecase.GetProfileUseCase
 import org.sopt.dosopttemplate.domain.usecase.PostSignInUseCase
 import org.sopt.dosopttemplate.domain.usecase.PostSignUpUseCase
@@ -38,5 +40,11 @@ class UseCaseModule {
     @Provides
     fun providePostSignInUserCase(repository: AuthRepository): PostSignInUseCase {
         return PostSignInUseCase(repository)
+    }
+
+    @Singleton
+    @Provides
+    fun provideGetListUsersUserCase(repository: ReqresRepository): GetListUsersUseCase {
+        return GetListUsersUseCase(repository)
     }
 }
