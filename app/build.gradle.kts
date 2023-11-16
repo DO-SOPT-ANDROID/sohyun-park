@@ -25,6 +25,9 @@ android {
         buildConfigField("String", "BASE_URL", Properties().apply {
             load(project.rootProject.file("local.properties").inputStream())
         }["base.url"].toString())
+        buildConfigField("String", "REQRES_BASE_URL", Properties().apply {
+            load(project.rootProject.file("local.properties").inputStream())
+        }["reqres.base.url"].toString())
     }
 
     buildTypes {
