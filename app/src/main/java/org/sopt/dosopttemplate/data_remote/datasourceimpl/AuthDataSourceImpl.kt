@@ -10,7 +10,7 @@ import javax.inject.Inject
 class AuthDataSourceImpl @Inject constructor(
     private val authApiService: AuthApiService
 ) : AuthDataSource {
-    override suspend fun postSignUp(requestSignUpDto: RequestSignUpDto): Unit {
+    override suspend fun postSignUp(requestSignUpDto: RequestSignUpDto) {
         return authApiService.postSignUp(requestSignUpDto)
     }
 
