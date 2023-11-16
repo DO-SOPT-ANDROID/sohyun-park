@@ -1,6 +1,7 @@
 package org.sopt.dosopttemplate.features.home.mapper
 
 import org.sopt.dosopttemplate.domain.entity.MockProfileEntity
+import org.sopt.dosopttemplate.domain.entity.ReqresListUsersEntity
 import org.sopt.dosopttemplate.features.home.model.Profile
 
 fun MockProfileEntity.toProfileList(): List<Profile> {
@@ -19,3 +20,12 @@ fun MockProfileEntity.toProfileList(): List<Profile> {
 
     return profileList
 }
+
+fun List<ReqresListUsersEntity>.toFriendProfiles(): List<Profile.Friend> {
+    return this.map { userEntity ->
+        Profile.Friend(
+            userEntity.avatar, userEntity.firstName, userEntity.email
+        )
+    }
+}
+
