@@ -8,21 +8,29 @@ import kotlinx.coroutines.flow.SharedFlow
 import kotlinx.coroutines.flow.asSharedFlow
 import kotlinx.coroutines.launch
 import org.sopt.dosopttemplate.core.view.UiState
-import org.sopt.dosopttemplate.features.account.model.User
+import org.sopt.dosopttemplate.domain.entity.UserEntity
+import org.sopt.dosopttemplate.domain.usecase.PostSignUpUseCase
+import org.sopt.dosopttemplate.domain.usecase.SetUserInformationUseCase
 import javax.inject.Inject
 
 @HiltViewModel
 class SignUpViewModel @Inject constructor(
+    private val setUserInformationUseCase: SetUserInformationUseCase,
+    private val postSignUpUseCase: PostSignUpUseCase
 ) : ViewModel() {
 
-    private val _signUpValidity = MutableSharedFlow<UiState<User>>()
-    val signUpValidity: SharedFlow<UiState<User>> = _signUpValidity.asSharedFlow()
+    private val _signUpValidity = MutableSharedFlow<UiState<UserEntity>>()
+    val signUpValidity: SharedFlow<UiState<UserEntity>> = _signUpValidity.asSharedFlow()
 
-    fun getSignUpValidity(inputSignUpInformation: User) = viewModelScope.launch {
+    private val _postSignUp = MutableSharedFlow<UiState<Unit?>>()
+    val postSignUp: SharedFlow<UiState<Unit?>> = _postSignUp.asSharedFlow()
+
+
+    fun getSignUpValidity(inputSignUpInformation: UserEntity) = viewModelScope.launch {
         _signUpValidity.emit(validate(inputSignUpInformation))
     }
 
-    private fun validate(inputSignUpInformation: User): UiState<User> {
+    private fun validate(inputSignUpInformation: UserEntity): UiState<UserEntity> {
         val errorMessage: String? = when {
             !checkIdValidity(inputSignUpInformation.id) -> "아이디 조건은 6~10 글자입니다."
             !checkPwValidity(inputSignUpInformation.pw) -> "비밀번호의 조건은 8~12 글자입니다."
@@ -39,6 +47,15 @@ class SignUpViewModel @Inject constructor(
     private fun checkNicknameValidity(nickname: String) = nickname.isNotBlank()
     private fun checkDrinkingCapacityValidity(drinkingCapacity: String) =
         drinkingCapacity.isNotBlank()
+
+    fun setUserInformation(user: UserEntity) = setUserInformationUseCase.setUserInformation(user)
+
+    fun postSignUp(inputSignUpInformation: UserEntity) = viewModelScope.launch {
+        postSignUpUseCase(inputSignUpInformation).collect {
+            _postSignUp.emit(UiState.Success(it))
+        }
+    }
+
 
     companion object {
         const val MIN_ID_LENGTH = 6

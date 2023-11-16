@@ -12,17 +12,18 @@ import org.sopt.dosopttemplate.core.context.snackBar
 import org.sopt.dosopttemplate.core.context.toast
 import org.sopt.dosopttemplate.core.view.UiState
 import org.sopt.dosopttemplate.databinding.ActivitySignUpBinding
-import org.sopt.dosopttemplate.features.account.model.User
+import org.sopt.dosopttemplate.domain.entity.UserEntity
+import timber.log.Timber
 
 @AndroidEntryPoint
 class SignUpActivity : BindingActivity<ActivitySignUpBinding>(R.layout.activity_sign_up) {
 
     private val signUpViewModel by viewModels<SignUpViewModel>()
-    private val signInViewModel by viewModels<SignInViewModel>()
 
     override fun initView() {
         setClickEventOnSignUpLabelButton()
         collectSignUpValidity()
+        collectPostSignUp()
     }
 
     private fun setClickEventOnSignUpLabelButton() {
@@ -31,13 +32,13 @@ class SignUpActivity : BindingActivity<ActivitySignUpBinding>(R.layout.activity_
         }
     }
 
-    private fun saveSignUpInformation(): User {
+    private fun saveSignUpInformation(): UserEntity {
         with(binding) {
-            return User(
-                viewSignUpId.etSignUp.text?.toString() ?: " ",
-                viewSignUpPw.etSignUp.text?.toString() ?: " ",
-                viewSignUpNickname.etSignUp.text?.toString() ?: " ",
-                viewSignUpDrinkingCapacity.etSignUp.text?.toString() ?: " "
+            return UserEntity(
+                viewSignUpId.etSignUp.text?.toString().orEmpty(),
+                viewSignUpPw.etSignUp.text?.toString().orEmpty(),
+                viewSignUpNickname.etSignUp.text?.toString().orEmpty(),
+                viewSignUpDrinkingCapacity.etSignUp.text?.toString().orEmpty()
             )
         }
     }
@@ -45,15 +46,28 @@ class SignUpActivity : BindingActivity<ActivitySignUpBinding>(R.layout.activity_
     private fun collectSignUpValidity() {
         signUpViewModel.signUpValidity.flowWithLifecycle(lifecycle).onEach {
             when (it) {
-                is UiState.Success -> handleSignUpSuccess(it.data)
+                is UiState.Success -> signUpViewModel.postSignUp(it.data)
                 is UiState.Failure -> snackBar(binding.root) { it.errorMessage }
-                is UiState.Loading -> {}
+                is UiState.Loading -> Unit
             }
         }.launchIn(lifecycleScope)
     }
 
-    private fun handleSignUpSuccess(inputSignUpInformation: User) {
-        signInViewModel.setUserInformation(inputSignUpInformation)
+    private fun collectPostSignUp() {
+        signUpViewModel.postSignUp.flowWithLifecycle(lifecycle).onEach {
+            when (it) {
+                is UiState.Success -> it.data?.let { handleSignUpSuccess(saveSignUpInformation()) }
+                    ?: run { snackBar(binding.root) { getString(R.string.errorMessage400) } }
+
+
+                is UiState.Failure -> Timber.d(it.errorMessage)
+                is UiState.Loading -> Unit
+            }
+        }.launchIn(lifecycleScope)
+    }
+
+    private fun handleSignUpSuccess(inputSignUpInformation: UserEntity) {
+        signUpViewModel.setUserInformation(inputSignUpInformation)
         toast(getString(R.string.success_message_sign_up))
         finish()
     }
