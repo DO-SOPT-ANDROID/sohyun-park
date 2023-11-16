@@ -5,7 +5,7 @@ import org.sopt.dosopttemplate.data.dto.request.RequestSignUpDto
 import org.sopt.dosopttemplate.data.dto.response.ResponseSignInDto
 
 interface AuthDataSource {
-    suspend fun postSignUp(requestSignUpDto: RequestSignUpDto): Unit
+    suspend fun postSignUp(requestSignUpDto: RequestSignUpDto)
 
     suspend fun postSignIn(requestSignInDto: RequestSignInDto): ResponseSignInDto
 }

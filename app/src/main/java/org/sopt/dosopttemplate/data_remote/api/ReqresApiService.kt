@@ -7,8 +7,14 @@ import retrofit2.http.Query
 
 interface ReqresApiService {
 
-    @GET("/api/users")
+    companion object {
+        const val API = "api"
+        const val USERS = "users"
+        const val PAGE = "page"
+    }
+
+    @GET("/$API/$USERS")
     suspend fun getListUsers(
-        @Query("page") page: Int
+        @Query(PAGE) page: Int
     ): BaseResponseNullable<List<ResponseListUsers>>
 }
