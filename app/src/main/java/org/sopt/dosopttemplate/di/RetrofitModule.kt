@@ -42,4 +42,5 @@ object RetrofitModule {
         .addConverterFactory(Json.asConverterFactory("application/json".toMediaType()))
         .client(okHttpClient)
         .build()
+
 }
