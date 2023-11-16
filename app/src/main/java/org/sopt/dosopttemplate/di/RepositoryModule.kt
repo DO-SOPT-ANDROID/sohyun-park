@@ -4,9 +4,9 @@ import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
-import org.sopt.dosopttemplate.data.repositoryimpl.AccountRepositoryImpl
+import org.sopt.dosopttemplate.data.repositoryimpl.AuthRepositoryImpl
 import org.sopt.dosopttemplate.data.repositoryimpl.HomeRepositoryImpl
-import org.sopt.dosopttemplate.domain.repository.AccountRepository
+import org.sopt.dosopttemplate.domain.repository.AuthRepository
 import org.sopt.dosopttemplate.domain.repository.HomeRepository
 import javax.inject.Singleton
 
@@ -17,8 +17,8 @@ abstract class RepositoryModule {
     @Binds
     @Singleton
     abstract fun bindsAccountRepository(
-        RepositoryImpl: AccountRepositoryImpl,
-    ): AccountRepository
+        RepositoryImpl: AuthRepositoryImpl,
+    ): AuthRepository
 
     @Binds
     @Singleton
