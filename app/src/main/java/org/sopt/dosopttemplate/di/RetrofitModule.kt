@@ -11,6 +11,7 @@ import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import org.sopt.dosopttemplate.BuildConfig.BASE_URL
+import org.sopt.dosopttemplate.BuildConfig.REQRES_BASE_URL
 import retrofit2.Retrofit
 import timber.log.Timber
 import javax.inject.Singleton
@@ -36,11 +37,19 @@ object RetrofitModule {
 
     @Singleton
     @Provides
-    @DoSoptRetrofit
-    fun provideRetrofit(okHttpClient: OkHttpClient): Retrofit = Retrofit.Builder()
+    @DoSoptAuthRetrofit
+    fun provideDoSoptRetrofit(okHttpClient: OkHttpClient): Retrofit = Retrofit.Builder()
         .baseUrl(BASE_URL)
         .addConverterFactory(Json.asConverterFactory("application/json".toMediaType()))
         .client(okHttpClient)
         .build()
 
+    @Singleton
+    @Provides
+    @ReqresRetrofit
+    fun provideReqresRetrofit(okHttpClient: OkHttpClient): Retrofit = Retrofit.Builder()
+        .baseUrl(REQRES_BASE_URL)
+        .addConverterFactory(Json.asConverterFactory("application/json".toMediaType()))
+        .client(okHttpClient)
+        .build()
 }

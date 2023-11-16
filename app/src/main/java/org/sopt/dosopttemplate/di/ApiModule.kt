@@ -14,6 +14,6 @@ object ApiModule {
 
     @Provides
     @Singleton
-    fun provideSignApiService(@DoSoptRetrofit retrofit: Retrofit): AuthApiService =
+    fun provideSignApiService(@DoSoptAuthRetrofit retrofit: Retrofit): AuthApiService =
         retrofit.create(AuthApiService::class.java)
 }
