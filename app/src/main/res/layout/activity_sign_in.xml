@@ -69,6 +69,18 @@
             app:layout_constraintStart_toEndOf="@id/tv_sign_in_pw_label"
             app:layout_constraintTop_toTopOf="@id/tv_sign_in_pw_label" />
 
+        <TextView
+            android:id="@+id/tv_sign_in_error_message"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="@string/tv_sign_in_error_message"
+            android:textAppearance="@style/TextAppearance.DoSopt.Body03"
+            android:textColor="@color/pink"
+            android:visibility="invisible"
+            app:layout_constraintStart_toStartOf="@id/tv_sign_in_pw_label"
+            app:layout_constraintTop_toBottomOf="@id/et_sign_in_pw" />
+
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btn_sign_in_signin_label"
             android:layout_width="match_parent"

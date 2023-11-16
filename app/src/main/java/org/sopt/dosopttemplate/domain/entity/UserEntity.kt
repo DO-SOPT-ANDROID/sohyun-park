@@ -9,8 +9,8 @@ import org.sopt.dosopttemplate.features.account.model.User
 data class UserEntity(
     val id: String,
     val pw: String,
-    val nickname: String,
-    val drinkingCapacity: String
+    val nickname: String = "",
+    val drinkingCapacity: String = ""
 ) : Parcelable {
     fun toUser() = User(
         id, pw, nickname, drinkingCapacity

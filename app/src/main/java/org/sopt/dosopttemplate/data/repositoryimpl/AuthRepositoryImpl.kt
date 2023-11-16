@@ -5,8 +5,10 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import org.sopt.dosopttemplate.data.datasource.AuthDataSource
 import org.sopt.dosopttemplate.data.datasource.SharedPreferenceDataSource
+import org.sopt.dosopttemplate.data.dto.request.RequestSignInDto
 import org.sopt.dosopttemplate.data.dto.request.RequestSignUpDto
 import org.sopt.dosopttemplate.domain.entity.UserEntity
+import org.sopt.dosopttemplate.domain.entity.UserIdEntity
 import org.sopt.dosopttemplate.domain.repository.AuthRepository
 import javax.inject.Inject
 
@@ -36,10 +38,18 @@ class AuthRepositoryImpl @Inject constructor(
 
     override suspend fun postSignUp(user: UserEntity): Flow<Unit?> {
         return flow {
-            val result = kotlin.runCatching {
+            val result = runCatching {
                 authDataSource.postSignUp(RequestSignUpDto(user.id, user.pw, user.nickname))
             }
-            Log.d("ttt", result.toString())
+            emit(result.getOrNull())
+        }
+    }
+
+    override suspend fun postSignIn(user: UserEntity): Flow<UserIdEntity?> {
+        return flow {
+            val result = runCatching {
+                authDataSource.postSignIn(RequestSignInDto(user.id, user.pw)).toUserIdEntity()
+            }
             emit(result.getOrNull())
         }
     }
