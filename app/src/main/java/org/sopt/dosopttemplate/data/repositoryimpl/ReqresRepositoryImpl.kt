@@ -16,7 +16,6 @@ class ReqresRepositoryImpl @Inject constructor(
             val result = runCatching {
                 reqresDataSource.getListUsers(page).data?.map { it.toReqresListUsersEntity() }
             }
-            Log.d("ttt",result.toString())
             emit(result.getOrDefault(emptyList()))
         }
     }

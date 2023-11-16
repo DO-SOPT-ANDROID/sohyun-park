@@ -28,8 +28,9 @@ class HomeFragment : BindingFragment<FragmentHomeBinding>(R.layout.fragment_home
             when (it) {
                 is UiState.Loading -> Unit
                 is UiState.Success -> {
-                    binding.rvHomeProfile.adapter = HomeAdapter(requireContext()).apply {
+                    binding.rvHomeProfile.adapter = HomeAdapter(requireContext()).run {
                         submitList(it.data.toProfileList())
+                        this
                     }
                 }
 
@@ -42,8 +43,9 @@ class HomeFragment : BindingFragment<FragmentHomeBinding>(R.layout.fragment_home
         viewModel.getReqresListUsers.flowWithLifecycle(lifecycle).onEach {
             when (it) {
                 is UiState.Success -> binding.rvHomeProfile.adapter =
-                    HomeAdapter(requireContext()).apply {
+                    HomeAdapter(requireContext()).run {
                         submitList(it.data?.toFriendProfiles())
+                        this
                     }
 
                 is UiState.Failure -> Timber.d(getString(R.string.error_message_get_profile_data))
