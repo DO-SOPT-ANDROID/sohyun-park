@@ -10,6 +10,7 @@
     <string name="btn_sign_in_signup_label">SIGN UP</string>
     <string name="error_message_invalid_sign_in">로그인에 실패했습니다.</string>
     <string name="success_message_valid_sign_in">로그인에 성공했습니다.</string>
+    <string name="tv_sign_in_error_message">아이디 또는 비밀번호를 잘못 입력했습니다. \n입력하신 내용을 다시 확인해주세요.</string>
 
     <!-- sign up -->
     <string name="tv_sign_up_id_label">[ID]</string>

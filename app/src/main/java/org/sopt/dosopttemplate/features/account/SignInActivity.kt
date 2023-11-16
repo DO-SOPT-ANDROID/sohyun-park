@@ -2,13 +2,19 @@ package org.sopt.dosopttemplate.features.account
 
 import android.content.Intent
 import androidx.activity.viewModels
+import androidx.core.view.isVisible
+import androidx.lifecycle.flowWithLifecycle
+import androidx.lifecycle.lifecycleScope
 import com.example.core_ui.base.BindingActivity
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.flow.launchIn
+import kotlinx.coroutines.flow.onEach
 import org.sopt.dosopttemplate.R
 import org.sopt.dosopttemplate.core.context.navigateTo
-import org.sopt.dosopttemplate.core.context.snackBar
 import org.sopt.dosopttemplate.core.context.toast
+import org.sopt.dosopttemplate.core.view.UiState
 import org.sopt.dosopttemplate.databinding.ActivitySignInBinding
+import org.sopt.dosopttemplate.domain.entity.UserEntity
 import org.sopt.dosopttemplate.features.MainActivity
 import org.sopt.dosopttemplate.features.account.model.User
 
@@ -20,6 +26,7 @@ class SignInActivity : BindingActivity<ActivitySignInBinding>(R.layout.activity_
     override fun initView() {
         setClickEventOnSignUpLabelButton()
         setClickEventOnSignInLabelButton()
+        collectPostSignIn()
     }
 
     override fun onResume() {
@@ -27,8 +34,10 @@ class SignInActivity : BindingActivity<ActivitySignInBinding>(R.layout.activity_
         setUserInformation()
     }
 
-    private fun setUserInformation() {
-        viewModel.getUserInformation()?.let { savedSignUpInformation = it }
+    private fun setUserInformation(): UserEntity {
+        with(binding) {
+            return UserEntity(etSignInId.text.toString(), etSignInPw.text.toString())
+        }
     }
 
     private fun setClickEventOnSignUpLabelButton() {
@@ -44,33 +53,29 @@ class SignInActivity : BindingActivity<ActivitySignInBinding>(R.layout.activity_
 
     private fun setClickEventOnSignInLabelButton() {
         binding.btnSignInSigninLabel.setOnClickListener {
-            handleSignIn()
+            viewModel.postSignIn(setUserInformation())
         }
     }
 
-    private fun handleSignIn() {
-        if (this::savedSignUpInformation.isInitialized && isSignInSuccessful(savedSignUpInformation)) {
-            handleSignInSuccess()
-        } else {
-            snackBar(binding.root) { getString(R.string.error_message_invalid_sign_in) }
-        }
+    private fun collectPostSignIn() {
+        viewModel.postSignIn.flowWithLifecycle(lifecycle).onEach {
+
+            when (it) {
+                is UiState.Success -> it.data?.let { userIdEntity ->
+                    handleSignInSuccess(
+                        userIdEntity.userId
+                    )
+                } ?: run { binding.tvSignInErrorMessage.isVisible = true }
+
+                is UiState.Failure -> binding.tvSignInErrorMessage.isVisible = true
+                is UiState.Loading -> Unit
+            }
+        }.launchIn(lifecycleScope)
     }
 
-    private fun isSignInSuccessful(user: User): Boolean {
-        return checkIdIdentification(user.id) && checkPwIdentification(user.pw)
-    }
-
-    private fun checkIdIdentification(id: String): Boolean {
-        return binding.etSignInId.text.toString() == id
-    }
-
-    private fun checkPwIdentification(pw: String): Boolean {
-        return binding.etSignInPw.text.toString() == pw
-    }
-
-    private fun handleSignInSuccess() {
+    private fun handleSignInSuccess(userId: Int?) {
         viewModel.setCheckSignIn(true)
-        toast(getString(R.string.success_message_valid_sign_in))
+        toast(getString(R.string.success_message_valid_sign_in) + "userId : $userId")
         navigateTo<MainActivity>()
     }
 }
