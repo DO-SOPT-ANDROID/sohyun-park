@@ -22,6 +22,11 @@
     <string name="tv_sign_up_title">SIGN UP</string>
     <string name="btn_sign_up_signup_label">회원가입 하기</string>
     <string name="success_message_sign_up">회원가입에 성공했습니다.</string>
+    <string name="et_sign_up_drinking_capacity_error">주량은 필수로 작성해주세요.</string>
+    <string name="et_sign_up_nickname_error">닉네임은 필수로 작성해주세요.</string>
+    <string name="et_sign_up_id_error">영문, 숫자가 포함되도록 하고 6~10글자 이내로 작성해주세요.</string>
+    <string name="et_sign_up_pw_error">영문, 숫자, 특수문자가 포함되도록 하고 6~12글자 이내로 작성해주세요.</string>
+
 
     <!-- main -->
     <string name="message_back_to_exit_pressed">뒤로 가기 버튼을 한 번 더 누르면 종료됩니다.</string>
