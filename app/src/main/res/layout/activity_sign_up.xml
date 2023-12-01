@@ -4,6 +4,11 @@
 
     <data>
 
+        <variable
+            name="vm"
+            type="org.sopt.dosopttemplate.features.account.SignUpViewModel" />
+
+        <import type="android.view.View" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -32,41 +37,139 @@
                     android:textAppearance="@style/TextAppearance.DoSopt.Title"
                     app:layout_constraintTop_toTopOf="parent" />
 
-                <include
-                    android:id="@+id/view_sign_up_id"
-                    layout="@layout/view_sign_up_section"
-                    android:layout_width="match_parent"
+                <TextView
+                    android:id="@+id/tv_sign_up_label_id"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    app:hint='@{@string/et_sign_in_id}'
-                    app:label="@{@string/tv_sign_up_id_label}"
+                    android:layout_marginTop="20dp"
+                    android:text="@string/tv_sign_up_id_label"
+                    android:textAppearance="@style/TextAppearance.DoSopt.Body01"
+                    app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/tv_sign_up_title" />
 
-                <include
-                    android:id="@+id/view_sign_up_pw"
-                    layout="@layout/view_sign_up_section"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    app:hint='@{@string/et_sign_in_pw}'
-                    app:label="@{@string/tv_sign_up_pw_label}"
-                    app:layout_constraintTop_toBottomOf="@id/view_sign_up_id" />
 
-                <include
-                    android:id="@+id/view_sign_up_nickname"
-                    layout="@layout/view_sign_up_section"
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/layout_sign_up_id"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:hint='@{@string/et_sign_up_nickname}'
-                    app:label="@{@string/tv_sign_up_nickname_label}"
-                    app:layout_constraintTop_toBottomOf="@id/view_sign_up_pw" />
+                    android:layout_marginTop="10dp"
+                    android:boxStrokeColor="@{vm.isIdValid() ? @color/yellow_main : @color/pink }"
+                    app:layout_constraintTop_toBottomOf="@id/tv_sign_up_label_id">
 
-                <include
-                    android:id="@+id/view_sign_up_drinking_capacity"
-                    layout="@layout/view_sign_up_section"
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/et_sign_up_id"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/et_sign_in_id"
+                        android:inputType="text"
+                        android:paddingHorizontal="15dp"
+                        android:text="@={vm._id}"
+                        android:textAppearance="@style/TextAppearance.DoSopt.Body02" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <TextView
+                    android:id="@+id/tv_sign_up_id_error"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:text="@string/et_sign_up_id_error"
+                    android:textAppearance="@style/TextAppearance.DoSopt.Body03"
+                    android:textColor="@color/pink"
+                    android:visibility="@{vm.isIdValid() ? View.GONE : View.VISIBLE}"
+                    app:layout_constraintEnd_toEndOf="@id/layout_sign_up_id"
+                    app:layout_constraintStart_toStartOf="@id/layout_sign_up_id"
+                    app:layout_constraintTop_toBottomOf="@id/layout_sign_up_id" />
+
+
+                <TextView
+                    android:id="@+id/tv_sign_up_label_pw"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:text="@string/tv_sign_in_pw_label"
+                    android:textAppearance="@style/TextAppearance.DoSopt.Body01"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tv_sign_up_id_error" />
+
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/layout_sign_up_pw"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:hint='@{@string/et_sign_up_drinking_capacity}'
-                    app:label="@{@string/tv_sign_up_drinking_capacity_label}"
-                    app:layout_constraintTop_toBottomOf="@id/view_sign_up_nickname" />
+                    android:layout_marginTop="10dp"
+                    app:boxStrokeColor="@{vm.isPwValid() ? @color/yellow_main : @color/pink }"
+                    app:layout_constraintTop_toBottomOf="@id/tv_sign_up_label_pw">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/et_sign_up_pw"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/et_sign_in_pw"
+                        android:inputType="text"
+                        android:paddingHorizontal="15dp"
+                        android:text="@={vm._pw}"
+                        android:textAppearance="@style/TextAppearance.DoSopt.Body02" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <TextView
+                    android:id="@+id/tv_sign_up_pw_error"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:text="@string/et_sign_up_pw_error"
+                    android:textAppearance="@style/TextAppearance.DoSopt.Body03"
+                    android:textColor="@color/pink"
+                    android:visibility="@{vm.isPwValid() ? View.GONE : View.VISIBLE}"
+                    app:layout_constraintEnd_toEndOf="@id/layout_sign_up_pw"
+                    app:layout_constraintStart_toStartOf="@id/layout_sign_up_pw"
+                    app:layout_constraintTop_toBottomOf="@id/layout_sign_up_pw" />
+
+                <TextView
+                    android:id="@+id/tv_sign_up_label_nickname"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:text="@string/tv_sign_up_nickname_label"
+                    android:textAppearance="@style/TextAppearance.DoSopt.Body01"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tv_sign_up_pw_error" />
+
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/layout_sign_up_nickname"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    app:boxStrokeColor="@{vm.isNicknameValid() ? @color/yellow_main : @color/pink }"
+                    app:layout_constraintTop_toBottomOf="@id/tv_sign_up_label_nickname">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/et_sign_up_nickname"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/et_sign_up_nickname"
+                        android:inputType="text"
+                        android:paddingHorizontal="15dp"
+                        android:text="@={vm._nickname}"
+                        android:textAppearance="@style/TextAppearance.DoSopt.Body02" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <TextView
+                    android:id="@+id/tv_sign_up_nickname_error"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:text="@string/et_sign_up_nickname_error"
+                    android:textAppearance="@style/TextAppearance.DoSopt.Body03"
+                    android:textColor="@color/pink"
+                    android:visibility="@{vm.isNicknameValid() ? View.INVISIBLE : View.VISIBLE}"
+                    app:layout_constraintEnd_toEndOf="@id/layout_sign_up_nickname"
+                    app:layout_constraintStart_toStartOf="@id/layout_sign_up_nickname"
+                    app:layout_constraintTop_toBottomOf="@id/layout_sign_up_nickname" />
+
 
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.core.widget.NestedScrollView>
@@ -77,6 +180,8 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="40dp"
             android:background="@color/yellow_sub"
+            android:backgroundTint="@{vm.isIdValid() &amp; !vm._id.isBlank() &amp; vm.isPwValid() &amp; !vm._pw.isBlank() &amp; vm.isNicknameValid() &amp; !vm._nickname.isBlank()? @color/yellow_main : @color/grey_600 }"
+            android:enabled="@{vm.isIdValid() &amp; !vm._id.isBlank() &amp; vm.isPwValid() &amp; !vm._pw.isBlank() &amp; vm.isNicknameValid() &amp; !vm._nickname.isBlank()  }"
             android:stateListAnimator="@null"
             android:text="@string/btn_sign_up_signup_label"
             android:textAppearance="@style/TextAppearance.DoSopt.Body02"
