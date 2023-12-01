@@ -21,6 +21,7 @@ class SignUpActivity : BindingActivity<ActivitySignUpBinding>(R.layout.activity_
     private val signUpViewModel by viewModels<SignUpViewModel>()
 
     override fun initView() {
+        binding.vm = signUpViewModel
         setClickEventOnSignUpLabelButton()
         collectSignUpValidity()
         collectPostSignUp()
@@ -35,10 +36,9 @@ class SignUpActivity : BindingActivity<ActivitySignUpBinding>(R.layout.activity_
     private fun saveSignUpInformation(): UserEntity {
         with(binding) {
             return UserEntity(
-                viewSignUpId.etSignUp.text?.toString().orEmpty(),
-                viewSignUpPw.etSignUp.text?.toString().orEmpty(),
-                viewSignUpNickname.etSignUp.text?.toString().orEmpty(),
-                viewSignUpDrinkingCapacity.etSignUp.text?.toString().orEmpty()
+                etSignUpId.text?.toString().orEmpty(),
+                etSignUpPw.text?.toString().orEmpty(),
+                etSignUpNickname.text?.toString().orEmpty()
             )
         }
     }

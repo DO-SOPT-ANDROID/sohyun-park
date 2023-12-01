@@ -1,6 +1,9 @@
 package org.sopt.dosopttemplate.features.account
 
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.map
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableSharedFlow
@@ -11,6 +14,7 @@ import org.sopt.dosopttemplate.core.view.UiState
 import org.sopt.dosopttemplate.domain.entity.UserEntity
 import org.sopt.dosopttemplate.domain.usecase.PostSignUpUseCase
 import org.sopt.dosopttemplate.domain.usecase.SetUserInformationUseCase
+import java.util.regex.Pattern
 import javax.inject.Inject
 
 @HiltViewModel
@@ -24,6 +28,20 @@ class SignUpViewModel @Inject constructor(
 
     private val _postSignUp = MutableSharedFlow<UiState<Unit?>>()
     val postSignUp: SharedFlow<UiState<Unit?>> = _postSignUp.asSharedFlow()
+
+    val _id = MutableLiveData("")
+
+    val _pw = MutableLiveData("")
+
+    val _nickname = MutableLiveData("")
+
+
+    val isIdValid: LiveData<Boolean> = _id.map { id -> checkIdValidity(id) || id.isBlank() }
+
+    val isPwValid: LiveData<Boolean> = _pw.map { pw -> checkPwValidity(pw) || pw.isBlank() }
+
+    val isNicknameValid: LiveData<Boolean> =
+        _pw.map { nickname -> checkNicknameValidity(nickname) || nickname.isBlank() }
 
 
     fun getSignUpValidity(inputSignUpInformation: UserEntity) = viewModelScope.launch {
@@ -42,8 +60,8 @@ class SignUpViewModel @Inject constructor(
         return errorMessage?.let { UiState.Failure(it) } ?: UiState.Success(inputSignUpInformation)
     }
 
-    private fun checkIdValidity(id: String) = id.length in MIN_ID_LENGTH..MAX_ID_LENGTH
-    private fun checkPwValidity(pw: String) = pw.length in MIN_PW_LENGTH..MAX_PW_LENGTH
+    private fun checkIdValidity(id: String) = Pattern.matches(REGEX_ID_PATTERN, id)
+    private fun checkPwValidity(pw: String) = Pattern.matches(REGEX_PW_PATTERN, pw)
     private fun checkNicknameValidity(nickname: String) = nickname.isNotBlank()
     private fun checkDrinkingCapacityValidity(drinkingCapacity: String) =
         drinkingCapacity.isNotBlank()
@@ -58,9 +76,14 @@ class SignUpViewModel @Inject constructor(
 
 
     companion object {
-        const val MIN_ID_LENGTH = 6
-        const val MAX_ID_LENGTH = 10
-        const val MIN_PW_LENGTH = 8
-        const val MAX_PW_LENGTH = 12
+        private const val MIN_ID_LENGTH = 6
+        private const val MAX_ID_LENGTH = 10
+        private const val MIN_PW_LENGTH = 6
+        private const val MAX_PW_LENGTH = 12
+        const val REGEX_ID_PATTERN =
+            "^(?=.*[a-zA-Z])(?=.*\\d)[a-zA-Z\\d]{$MIN_ID_LENGTH,$MAX_ID_LENGTH}\$"
+        const val REGEX_PW_PATTERN =
+            "^(?=.*[a-zA-Z])(?=.*\\d)(?=.*[^\\w\\s])[a-zA-Z\\d\\S]{$MIN_PW_LENGTH,$MAX_PW_LENGTH}\$"
+
     }
 }
