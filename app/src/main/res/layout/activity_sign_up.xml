@@ -40,40 +40,48 @@
                     layout="@layout/view_sign_up_section"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    app:errorMessage='@{@string/error_message_sign_up_id}'
                     app:hint='@{@string/et_sign_in_id}'
                     app:label="@{@string/tv_sign_up_id_label}"
                     app:layout_constraintTop_toBottomOf="@id/tv_sign_up_title"
-                    app:textValue="@={viewModel.id}" />
+                    app:textValue="@={viewModel.id}"
+                    app:valid="@{viewModel.isIdValid()||viewModel.id.isBlank()}" />
 
                 <include
                     android:id="@+id/view_sign_up_pw"
                     layout="@layout/view_sign_up_section"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    app:errorMessage='@{@string/error_message_sign_up_pw}'
                     app:hint='@{@string/et_sign_in_pw}'
                     app:label="@{@string/tv_sign_up_pw_label}"
                     app:layout_constraintTop_toBottomOf="@id/view_sign_up_id"
-                    app:textValue="@={viewModel.pw}" />
+                    app:textValue="@={viewModel.pw}"
+                    app:valid="@{viewModel.isPwValid()||viewModel.pw.isBlank()}" />
 
                 <include
                     android:id="@+id/view_sign_up_nickname"
                     layout="@layout/view_sign_up_section"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    app:errorMessage='@{@string/error_message_sign_up_nickname}'
                     app:hint='@{@string/et_sign_up_nickname}'
                     app:label="@{@string/tv_sign_up_nickname_label}"
                     app:layout_constraintTop_toBottomOf="@id/view_sign_up_pw"
-                    app:textValue="@={viewModel.nickname}" />
+                    app:textValue="@={viewModel.nickname}"
+                    app:valid="@{viewModel.isNicknameValid()||viewModel.nickname.isBlank()}" />
 
                 <include
                     android:id="@+id/view_sign_up_drinking_capacity"
                     layout="@layout/view_sign_up_section"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    app:errorMessage='@{@string/error_message_sign_up_drinking_capacity}'
                     app:hint='@{@string/et_sign_up_drinking_capacity}'
                     app:label="@{@string/tv_sign_up_drinking_capacity_label}"
                     app:layout_constraintTop_toBottomOf="@id/view_sign_up_nickname"
-                    app:textValue="@={viewModel.drinkingCapacity}" />
+                    app:textValue="@={viewModel.drinkingCapacity}"
+                    app:valid="@{viewModel.isDrinkingCapacityValid()||viewModel.drinkingCapacity.isBlank()}" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.core.widget.NestedScrollView>

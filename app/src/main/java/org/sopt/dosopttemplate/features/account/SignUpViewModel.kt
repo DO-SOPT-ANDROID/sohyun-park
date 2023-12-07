@@ -47,7 +47,6 @@ class SignUpViewModel @Inject constructor(
     val isDrinkingCapacityValid: LiveData<Boolean> =
         drinkingCapacity.map { drinkingCapacity -> checkDrinkingCapacityValidity(drinkingCapacity) }
 
-
     fun getSignUpValidity(inputSignUpInformation: UserEntity) = viewModelScope.launch {
         _signUpValidity.emit(validate(inputSignUpInformation))
     }
@@ -72,7 +71,7 @@ class SignUpViewModel @Inject constructor(
     private fun checkPwValidity(pw: String) = Pattern.matches(REGEX_PW_PATTERN, pw)
     private fun checkNicknameValidity(nickname: String) = nickname.isNotBlank()
     private fun checkDrinkingCapacityValidity(drinkingCapacity: String) =
-        drinkingCapacity.isNotBlank()
+        Pattern.matches(REGEX_DRINKING_CAPACITY_PATTERN, drinkingCapacity)
 
     fun setUserInformation(user: UserEntity) = setUserInformationUseCase.setUserInformation(user)
 
@@ -81,7 +80,6 @@ class SignUpViewModel @Inject constructor(
             _postSignUp.emit(UiState.Success(it))
         }
     }
-
 
     companion object {
         private const val MIN_ID_LENGTH = 6
@@ -92,5 +90,6 @@ class SignUpViewModel @Inject constructor(
             "^(?=.*[a-zA-Z])(?=.*\\d)[a-zA-Z\\d]{$MIN_ID_LENGTH,$MAX_ID_LENGTH}\$"
         const val REGEX_PW_PATTERN =
             "^(?=.*[a-zA-Z])(?=.*\\d)(?=.*[^\\w\\s])[a-zA-Z\\d\\S]{$MIN_PW_LENGTH,$MAX_PW_LENGTH}\$"
+        const val REGEX_DRINKING_CAPACITY_PATTERN = "^(?=.*병)\\\\d+"
     }
 }
