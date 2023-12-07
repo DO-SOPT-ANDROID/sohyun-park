@@ -37,15 +37,19 @@ class SignUpViewModel @Inject constructor(
 
     val drinkingCapacity = MutableLiveData("")
 
-    val isIdValid: LiveData<Boolean> = id.map { id -> checkIdValidity(id) }
+    private val _isIdValid = id.map { id -> checkIdValidity(id) }
+    val isIdValid: LiveData<Boolean> get() = _isIdValid
 
-    val isPwValid: LiveData<Boolean> = pw.map { pw -> checkPwValidity(pw) }
+    private val _isPwValid = pw.map { pw -> checkPwValidity(pw) }
+    val isPwValid: LiveData<Boolean> get() = _isPwValid
 
-    val isNicknameValid: LiveData<Boolean> =
-        nickname.map { nickname -> checkNicknameValidity(nickname) }
+    private val _isNicknameValid = nickname.map { nickname -> checkNicknameValidity(nickname) }
+    val isNicknameValid: LiveData<Boolean> get() = _isNicknameValid
 
-    val isDrinkingCapacityValid: LiveData<Boolean> =
+    private val _isDrinkingCapacityValid =
         drinkingCapacity.map { drinkingCapacity -> checkDrinkingCapacityValidity(drinkingCapacity) }
+    val isDrinkingCapacityValid: LiveData<Boolean> get() = _isDrinkingCapacityValid
+
 
     fun getSignUpValidity(inputSignUpInformation: UserEntity) = viewModelScope.launch {
         _signUpValidity.emit(validate(inputSignUpInformation))
