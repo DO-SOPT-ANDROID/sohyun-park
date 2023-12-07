@@ -4,6 +4,9 @@
 
     <data>
 
+        <variable
+            name="viewModel"
+            type="org.sopt.dosopttemplate.features.account.SignUpViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -39,7 +42,8 @@
                     android:layout_height="wrap_content"
                     app:hint='@{@string/et_sign_in_id}'
                     app:label="@{@string/tv_sign_up_id_label}"
-                    app:layout_constraintTop_toBottomOf="@id/tv_sign_up_title" />
+                    app:layout_constraintTop_toBottomOf="@id/tv_sign_up_title"
+                    app:textValue="@={viewModel.id}" />
 
                 <include
                     android:id="@+id/view_sign_up_pw"
@@ -48,7 +52,8 @@
                     android:layout_height="wrap_content"
                     app:hint='@{@string/et_sign_in_pw}'
                     app:label="@{@string/tv_sign_up_pw_label}"
-                    app:layout_constraintTop_toBottomOf="@id/view_sign_up_id" />
+                    app:layout_constraintTop_toBottomOf="@id/view_sign_up_id"
+                    app:textValue="@={viewModel.pw}" />
 
                 <include
                     android:id="@+id/view_sign_up_nickname"
@@ -57,7 +62,8 @@
                     android:layout_height="wrap_content"
                     app:hint='@{@string/et_sign_up_nickname}'
                     app:label="@{@string/tv_sign_up_nickname_label}"
-                    app:layout_constraintTop_toBottomOf="@id/view_sign_up_pw" />
+                    app:layout_constraintTop_toBottomOf="@id/view_sign_up_pw"
+                    app:textValue="@={viewModel.nickname}" />
 
                 <include
                     android:id="@+id/view_sign_up_drinking_capacity"
@@ -66,7 +72,8 @@
                     android:layout_height="wrap_content"
                     app:hint='@{@string/et_sign_up_drinking_capacity}'
                     app:label="@{@string/tv_sign_up_drinking_capacity_label}"
-                    app:layout_constraintTop_toBottomOf="@id/view_sign_up_nickname" />
+                    app:layout_constraintTop_toBottomOf="@id/view_sign_up_nickname"
+                    app:textValue="@={viewModel.drinkingCapacity}" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.core.widget.NestedScrollView>
@@ -76,7 +83,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="40dp"
-            android:background="@color/yellow_sub"
+            android:background="@{viewModel.isIdValid() &amp; viewModel.isPwValid() &amp; viewModel.isNicknameValid() &amp; viewModel.isDrinkingCapacityValid() ? @color/yellow_main : @color/grey_200 }"
+            android:enabled="@{viewModel.isIdValid() &amp; viewModel.isPwValid() &amp; viewModel.isNicknameValid() &amp; viewModel.isDrinkingCapacityValid() }"
             android:stateListAnimator="@null"
             android:text="@string/btn_sign_up_signup_label"
             android:textAppearance="@style/TextAppearance.DoSopt.Body02"

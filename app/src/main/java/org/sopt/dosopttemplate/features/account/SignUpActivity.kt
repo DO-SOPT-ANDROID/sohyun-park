@@ -21,6 +21,7 @@ class SignUpActivity : BindingActivity<ActivitySignUpBinding>(R.layout.activity_
     private val signUpViewModel by viewModels<SignUpViewModel>()
 
     override fun initView() {
+        binding.viewModel = signUpViewModel
         setClickEventOnSignUpLabelButton()
         collectSignUpValidity()
         collectPostSignUp()
