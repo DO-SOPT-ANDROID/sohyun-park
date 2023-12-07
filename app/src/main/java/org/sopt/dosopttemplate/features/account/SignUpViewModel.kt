@@ -94,6 +94,6 @@ class SignUpViewModel @Inject constructor(
             "^(?=.*[a-zA-Z])(?=.*\\d)[a-zA-Z\\d]{$MIN_ID_LENGTH,$MAX_ID_LENGTH}\$"
         const val REGEX_PW_PATTERN =
             "^(?=.*[a-zA-Z])(?=.*\\d)(?=.*[^\\w\\s])[a-zA-Z\\d\\S]{$MIN_PW_LENGTH,$MAX_PW_LENGTH}\$"
-        const val REGEX_DRINKING_CAPACITY_PATTERN = "^(?=.*병)\\\\d+"
+        const val REGEX_DRINKING_CAPACITY_PATTERN = "\\d+병"
     }
 }
