@@ -7,6 +7,7 @@ import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.SharedFlow
 import kotlinx.coroutines.flow.asSharedFlow
 import kotlinx.coroutines.launch
+import org.sopt.dosopttemplate.R
 import org.sopt.dosopttemplate.core.view.UiState
 import org.sopt.dosopttemplate.domain.entity.UserEntity
 import org.sopt.dosopttemplate.domain.usecase.PostSignUpUseCase
@@ -19,8 +20,8 @@ class SignUpViewModel @Inject constructor(
     private val postSignUpUseCase: PostSignUpUseCase
 ) : ViewModel() {
 
-    private val _signUpValidity = MutableSharedFlow<UiState<UserEntity>>()
-    val signUpValidity: SharedFlow<UiState<UserEntity>> = _signUpValidity.asSharedFlow()
+    private val _signUpValidity = MutableSharedFlow<SignUpState<UserEntity>>()
+    val signUpValidity: SharedFlow<SignUpState<UserEntity>> = _signUpValidity.asSharedFlow()
 
     private val _postSignUp = MutableSharedFlow<UiState<Unit?>>()
     val postSignUp: SharedFlow<UiState<Unit?>> = _postSignUp.asSharedFlow()
@@ -30,16 +31,14 @@ class SignUpViewModel @Inject constructor(
         _signUpValidity.emit(validate(inputSignUpInformation))
     }
 
-    private fun validate(inputSignUpInformation: UserEntity): UiState<UserEntity> {
-        val errorMessage: String? = when {
-            !checkIdValidity(inputSignUpInformation.id) -> "아이디 조건은 6~10 글자입니다."
-            !checkPwValidity(inputSignUpInformation.pw) -> "비밀번호의 조건은 8~12 글자입니다."
-            !checkNicknameValidity(inputSignUpInformation.nickname) -> "닉네임을 입력해주세요."
-            !checkDrinkingCapacityValidity(inputSignUpInformation.drinkingCapacity) -> "주량을 입력해주세요."
-            else -> null
+    private fun validate(inputSignUpInformation: UserEntity): SignUpState<UserEntity> {
+        return when {
+            !checkIdValidity(inputSignUpInformation.id) -> SignUpState.Failure(SignUpInputType.ID)
+            !checkPwValidity(inputSignUpInformation.pw) -> SignUpState.Failure(SignUpInputType.PW)
+            !checkNicknameValidity(inputSignUpInformation.nickname) -> SignUpState.Failure(SignUpInputType.NICK_NAME)
+            !checkDrinkingCapacityValidity(inputSignUpInformation.drinkingCapacity) -> SignUpState.Failure(SignUpInputType.DRINKING_CAPACITY)
+            else -> SignUpState.Success(inputSignUpInformation)
         }
-
-        return errorMessage?.let { UiState.Failure(it) } ?: UiState.Success(inputSignUpInformation)
     }
 
     private fun checkIdValidity(id: String) = id.length in MIN_ID_LENGTH..MAX_ID_LENGTH

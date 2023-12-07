@@ -46,11 +46,20 @@ class SignUpActivity : BindingActivity<ActivitySignUpBinding>(R.layout.activity_
     private fun collectSignUpValidity() {
         signUpViewModel.signUpValidity.flowWithLifecycle(lifecycle).onEach {
             when (it) {
-                is UiState.Success -> signUpViewModel.postSignUp(it.data)
-                is UiState.Failure -> snackBar(binding.root) { it.errorMessage }
-                is UiState.Loading -> Unit
+                is SignUpState.Success -> signUpViewModel.postSignUp(it.data)
+                is SignUpState.Failure -> handleSignUpError(it.type)
+                is SignUpState.Loading -> Unit
             }
         }.launchIn(lifecycleScope)
+    }
+
+    private fun handleSignUpError(type : SignUpInputType){
+        when(type){
+            SignUpInputType.ID -> { snackBar(binding.root) { getString(R.string.errormessage_sign_up_id) } }
+            SignUpInputType.PW -> { snackBar(binding.root) { getString(R.string.errormessage_sign_up_pw) } }
+            SignUpInputType.NICK_NAME -> { snackBar(binding.root) { getString(R.string.errormessage_sign_up_nickname) } }
+            SignUpInputType.DRINKING_CAPACITY -> { snackBar(binding.root) { getString(R.string.errormessage_sign_up_drinking_capacity) } }
+        }
     }
 
     private fun collectPostSignUp() {
