@@ -22,6 +22,10 @@
     <string name="tv_sign_up_title">SIGN UP</string>
     <string name="btn_sign_up_signup_label">회원가입 하기</string>
     <string name="success_message_sign_up">회원가입에 성공했습니다.</string>
+    <string name="errormessage_sign_up_id">아이디 조건은 6~10 글자입니다.</string>
+    <string name="errormessage_sign_up_pw">비밀번호의 조건은 8~12 글자입니다.</string>
+    <string name="errormessage_sign_up_nickname">닉네임을 입력해주세요.</string>
+    <string name="errormessage_sign_up_drinking_capacity">주량을 입력해주세요.</string>
 
     <!-- main -->
     <string name="message_back_to_exit_pressed">뒤로 가기 버튼을 한 번 더 누르면 종료됩니다.</string>
