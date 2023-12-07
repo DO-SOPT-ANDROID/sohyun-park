@@ -12,6 +12,7 @@ fun loadImage(view: ImageView, url: String?) {
     view.load(imageResource)
 }
 
+//BindingAdaptor 사용하기
 @BindingAdapter("setCircleImage")
 fun ImageView.setCircleImage(img: String?) {
     val imageResource = if (img.isNullOrEmpty()) R.drawable.img_empty_profile_image else img
