@@ -16,6 +16,16 @@
         <variable
             name="textValue"
             type="String" />
+
+        <variable
+            name="valid"
+            type="Boolean" />
+
+        <variable
+            name="errorMessage"
+            type="String" />
+
+        <import type="android.view.View" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -41,6 +51,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
+            app:boxStrokeColor="@{valid ? @color/yellow_main : @color/pink}"
             app:layout_constraintTop_toBottomOf="@id/tv_sign_up_label">
 
             <com.google.android.material.textfield.TextInputEditText
@@ -48,11 +59,25 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@{hint}"
-                android:text="@={textValue}"
                 android:inputType="text"
                 android:paddingHorizontal="15dp"
+                android:text="@={textValue}"
                 android:textAppearance="@style/TextAppearance.DoSopt.Body02"
                 tools:hint="detail를 입력하세요." />
         </com.google.android.material.textfield.TextInputLayout>
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="2dp"
+            android:layout_marginTop="5dp"
+            android:text="@{errorMessage}"
+            android:textAppearance="@style/TextAppearance.DoSopt.Body03"
+            android:textColor="@color/pink"
+            android:visibility="@{valid ? View.INVISIBLE : View.VISIBLE}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/layout_sign_up"
+            tools:text="에러 메시지" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

@@ -56,10 +56,10 @@ class SignUpActivity : BindingActivity<ActivitySignUpBinding>(R.layout.activity_
 
     private fun handleSignUpError(type : SignUpInputType){
         when(type){
-            SignUpInputType.ID -> { snackBar(binding.root) { getString(R.string.errormessage_sign_up_id) } }
-            SignUpInputType.PW -> { snackBar(binding.root) { getString(R.string.errormessage_sign_up_pw) } }
-            SignUpInputType.NICK_NAME -> { snackBar(binding.root) { getString(R.string.errormessage_sign_up_nickname) } }
-            SignUpInputType.DRINKING_CAPACITY -> { snackBar(binding.root) { getString(R.string.errormessage_sign_up_drinking_capacity) } }
+            SignUpInputType.ID -> { snackBar(binding.root) { getString(R.string.error_message_sign_up_id) } }
+            SignUpInputType.PW -> { snackBar(binding.root) { getString(R.string.error_message_sign_up_pw) } }
+            SignUpInputType.NICK_NAME -> { snackBar(binding.root) { getString(R.string.error_message_sign_up_nickname) } }
+            SignUpInputType.DRINKING_CAPACITY -> { snackBar(binding.root) { getString(R.string.error_message_sign_up_drinking_capacity) } }
         }
     }
 
