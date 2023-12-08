@@ -14,7 +14,6 @@ import org.sopt.dosopttemplate.core.view.UiState
 import org.sopt.dosopttemplate.databinding.FragmentDoAndroidBinding
 import org.sopt.dosopttemplate.features.home.mapper.toProfileList
 import org.sopt.dosopttemplate.features.home.model.Profile
-import org.sopt.dosopttemplate.features.util.EventObserver
 import org.sopt.dosopttemplate.features.util.Profile.PROFILE_INFORMATION
 import timber.log.Timber
 
@@ -25,7 +24,7 @@ class DoAndroidFragment : BindingFragment<FragmentDoAndroidBinding>(R.layout.fra
 
     override fun initView() {
         collectProfile()
-        observeProfileClickEvent()
+        setProfileClickEvent()
     }
 
     private fun collectProfile() {
@@ -52,10 +51,10 @@ class DoAndroidFragment : BindingFragment<FragmentDoAndroidBinding>(R.layout.fra
         }
     }
 
-    private fun observeProfileClickEvent() {
-        viewModel.openProfileDetail.observe(viewLifecycleOwner, EventObserver {
+    private fun setProfileClickEvent() {
+        viewModel.openProfileDetail.flowWithLifecycle(lifecycle).onEach {
             navigateToProfileDetail(it)
-        })
+        }.launchIn(lifecycleScope)
     }
 
     private fun navigateToProfileDetail(profileInfo: Profile) {
